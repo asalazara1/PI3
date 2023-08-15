@@ -11,6 +11,10 @@
 \usepackage{float}
 \usepackage{algpseudocode}
 \usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage{hyperref}
+
+\usepackage[english]{babel}
 \geometry{verbose,letterpaper,tmargin=3cm,bmargin=3cm,lmargin=2.5cm,rmargin=2.5cm}
 
 % Tables
@@ -19,6 +23,16 @@
 
 % Avoid to split words at the end of each line
 \usepackage[none]{hyphenat}
+
+\usepackage{setspace}
+
+\usepackage{natbib} 
+\setcitestyle{numbers,square}
+
+\usepackage{notoccite}
+
+
+\singlespacing
 
 \begin{document}
 
@@ -69,6 +83,8 @@ Cristhian David Zambrano Mora\footnote{Affiliation, \textcolor{red}{email}}   \\
 
 \section{Introduction (\textcolor{red}{4 a 5 párrafos})}
 
+\begin{comment}
+
 Debe incluir:
 
 \begin{itemize}
@@ -78,6 +94,43 @@ Debe incluir:
 \item Párrafo que justifique la importancia de la investigación.
 \end{itemize}
 
+\end{comment}
+
+
+The brain is by far the most metabolically active organ in the human body, 
+accounting for about $25\%$ of the total metabolic activity of a person
+while being only around $2.5\%$ of his/her total weight \cite{Ischemia}.
+This is why the brain is also one of the most sensitive organs to decreases 
+in the supply of oxygen delivered to it and therefore has the most complex 
+circulatory self-regulation system of the body,  having multiple mechanisms 
+to keep the blood flow as stable as possible and to compensate for the 
+oscillations caused by body processes \cite{AnatoFisio}. When these normal
+levels of blood flow are compromised,  ischemia,  or in more general terms, 
+a stroke is caused.\\~\\
+A stroke is a medical condition where brain cells die due to oxygen starvation,
+originated from a disruption in the blood supply to the brain. It can
+be classified into two main types, hemorrhagic, when the cause is internal bleeding
+on the brain and ischemic when it is caused by the lack of blood flow,  being the 
+latter the most common,  accounting for $87\%$ of all strokes \cite{johns_hopkins_medicine}.
+They are considered one of the leading causes of death and a major cause
+of disability worldwide. In 2019 Stroke's global prevalence was 101.5 million 
+people,  of which 6.6 million were fatal \cite{burden},  and even though this shows 
+a decrease in the number of incidents in comparison to previous years,  Strokes keep being a
+matter of concern for the medical scientific community.\\~\\
+It’s because of this and because of many other reasons that in recent years 
+not only the medical community,  but the scientific community in general,  
+has focused great efforts on blood flow analysis,  and this is where computational 
+fluid dynamics (CFD) becomes important. CFD is a branch of applied mathematics,  
+where Numerical Methods and computational resources are used in order to solve 
+fluid dynamics problems,  an area in which due to the great complexity of the 
+dominant partial differential equations (Navier-Stokes Equations,  Euler Equations, 
+etc) it has been impossible to give an analytical answer to its problems.\\~\\
+
+\begin{comment}
+  Parrafo comentando los principales métodos implementados en CFD (principamente FEM) comentar el alto número de grados de libertad e introducir RBM y PINN utilizando NN.
+  
+  Parrafo comentando rápidamente el objetivo de la investigación, como se realizará y el aporte esperado.
+\end{comment}
 
 \section{Statement of the problem}
 
@@ -204,15 +257,15 @@ Adapta es siguiente cronograma a tu PI.
 			\cline{2-19}
             & \emph{\footnotesize 1} & \emph{\footnotesize 2} & \emph{\footnotesize 3} & \emph{\footnotesize 4} & \emph{\footnotesize 5} & \emph{\footnotesize 6} & \emph{\footnotesize 7} & \emph{\footnotesize 8} & \emph{\footnotesize 9} & \emph{\footnotesize 10} & \emph{\footnotesize 11} & \emph{\footnotesize 12} & \emph{\footnotesize 13} & \emph{\footnotesize 14} & \emph{\footnotesize 15} & \emph{\footnotesize 16} & \emph{\footnotesize 17} & \emph{\footnotesize 18} \\
 			\hline
-			Activity 1 & \cellcolor{black}{1}  & \cellcolor{black}{1} & \cellcolor{black}{1} &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+			Literature Review & \cellcolor{black}{1}  & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} &  &  &  &  &  &  &  &  &  &  &  &  &  \\
 			\hline
-			Activity 2 & & & & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} &  \cellcolor{black}{1}& & & & & & & & & & \\
+			Research proposal writting & & & &  & \cellcolor{black}{1} & \cellcolor{black}{1} & & & & & & & & & & & & \\
 			\hline
 			Activity 3 & & & & & & & & & \cellcolor{black}{1} &  \cellcolor{black}{1}& \cellcolor{black}{1} & \cellcolor{black}{1} & & & & & & \\
 			\hline
-			Activity 4 & & & & & & & & & & & & & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & & & \\
+			Results Analysis and comparison & & & & & & & & & & & & & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} & & & \\
 			\hline
-			Activity 5 & & & & & & & & & & & & & & & & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} \\
+			Final Report writting & & & & & & & & & & & & & & & & \cellcolor{black}{1} & \cellcolor{black}{1} & \cellcolor{black}{1} \\
 			\hline
 		\end{tabular}
         }
@@ -228,7 +281,7 @@ Universidad EAFIT, the results of this research practice are product of
 
 In case further products, beside academic articles, that could be generated from this work, the intellectual property distribution related to them will be directed under the current regulation of this matter determined by \cite{reglamento2017}.
 
-\bibliographystyle{authordate1}
-\bibliography{references}
+\bibliographystyle{vancouver}
+\bibliography{references.bib}
 
 \end{document}
