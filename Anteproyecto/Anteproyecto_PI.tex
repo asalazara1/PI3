@@ -98,7 +98,6 @@ Debe incluir:
 
 \end{comment}
 
-
 The brain is by far the most metabolically active organ in the human body, 
 accounting for about $25\%$ of the total metabolic activity of a person
 while being only around $2.5\%$ of his/her total weight \cite{Ischemia}.
@@ -127,6 +126,14 @@ where Numerical Methods and computational resources are used in order to solve
 fluid dynamics problems,  an area in which due to the great complexity of the 
 dominant partial differential equations (Navier-Stokes Equations,  Euler Equations, 
 etc) it has been impossible to give an analytical answer to its problems.\\~\\
+One of the most used methods of CFD is the Finite Element Method (FEM), a numerical method
+consisting on the discretization of the problem's domain, to later solve a variational 
+formulation of the problem with determined test functions, to obtain an algebraic system of 
+equations, which, when solved, gives the approximated solution of the problem. However, due 
+to the large amount of degrees of freedom it needs in order to correctly solve the CFD 
+problem, it remains as an extremely expensive method both in terms of CPU and memory 
+demand, therefore not being too useful for real-time contexts \cite{hesthaven2018non}.\\~\\
+As a consequence of the later, this project focuses on the implementation of models with reduced computational cost, in specific Physical Informed Neural Networks (PINNs) and Neural Network asisted Reduced Basis Models (NN-RBM), in a simulated \textit{real-time} context in the analysis of blood flow in both healthy and atherosclerotic patients, using the carotid artery as a study object, to observe and compare the flow behavior in different cases and to understand the variations that eventually lead to the formation of cerebral ischemias
 
 \begin{comment}
   Parrafo comentando los principales métodos implementados en CFD (principamente FEM) comentar el alto número de grados de libertad e introducir RBM y PINN utilizando NN.
