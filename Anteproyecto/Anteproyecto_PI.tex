@@ -136,7 +136,7 @@ PDEs, specifically Physical Informed Neural Networks (PINNs) and Neural Network 
 Basis Models (NN-RBM), seeking to obtain a reduced computational cost in a real-time simulation 
 context. The Navier-Stokes equations, and in particular, a simulation problem of blood flow through 
 the carotid artery, will be used as an object of study, to observe and compare the performance of 
-these methods versus the FEM in an on-line simulation process. 
+these methods versus the FEM in an on-line simulation process, aiming for a deeper understanding of the advantages and limitations of NN-RBMs, PINNs and FEM in the context of real-time simulations.
 
 \begin{comment}
   Parrafo comentando los principales métodos implementados en CFD (principamente FEM) comentar el alto número de grados de libertad e introducir RBM y PINN utilizando NN.
@@ -148,11 +148,12 @@ these methods versus the FEM in an on-line simulation process.
 
 
 
-\subsection{Statement of the problem (\textcolor{red}{4 a 5 párrafos})}
+\subsection{Statement of the problem}
 
 \begin{comment}
+  \textcolor{red}{4 a 5 párrafos})
   En este apartado debemos ampliar la descripción del problema.
-  
+
   En esta subsección se hace una ampliación del problema descrito en la introducción. Acá hay
   algunas aspectos que se pueden abordar acá.
 
@@ -170,7 +171,13 @@ these methods versus the FEM in an on-line simulation process.
 
 For solving fluid dynamics problems, Computational Fluid Dynamics (CFD) mainly uses three methods: The Finite Difference Method, The Finite Volumes Method, and the Finite Element Method. In the finite difference method, the derivatives of the problem are usually replaced by truncated expansions of the Taylor series, this method is straightforward for regular geometries, but when working with irregular geometries it is necessary to perform transformations to the equations before the expansion is carried out\cite{AutoDesk}. In the finite volume method, the discretization is performed by partitioning the spatial domain into a mesh, in which each of its elements will be called a control volume. The idea is to perform the integration of the dominant equations of the problem through each control volume, balancing the fluxes across the boundaries of the individual volumes and getting what is called a balance equation. Then the set of balance equations will be discretized with respect to a set of discrete unknowns to finally get the solution to the problem\cite{volumes}. In a topologically regular mesh, these calculations are done quite easily, but when working with irregular meshes, this calculation will result in an unbearable amount of fluxes and a significant accounting effort to ensure that all fluxes have been calculated correctly\cite{AutoDesk}.\\
 
-Finally, the finite element method is a numerical method highly used in computational fluid dynamics to solve problems whose domain is defined by irregular geometries. The method makes it possible to find the numerical solution to these problems by dividing the initial domain of the same (a continuous element) into a large number of non-intersecting subdomains, called finite elements. Each element will have a set of representative points called nodes, which will make up the complete grid of the problem, on which the calculations will be performed. At last, the formulation of a boundary value problem ends up giving a system of algebraic equations, which are then solved using variational methods in order to approximate a solution, minimizing an associated error function\cite{element}
+Finally, the finite element method is a numerical method highly used in computational fluid dynamics to solve problems whose domain is defined by irregular geometries. The method makes it possible to find the numerical solution to these problems by dividing the initial domain of the same (a continuous element) into a large number of non-intersecting subdomains, called finite elements. Each element will have a set of representative points called nodes, which will make up the complete grid of the problem, on which the calculations will be performed. At last, the formulation of a boundary value problem ends up giving a system of algebraic equations, which are then solved using variational methods in order to approximate a solution, minimizing an associated error function\cite{element}.\\
+
+\textcolor{red}{Reduced Basis Models (RBMs) have emerged as a powerful computational technique for efficiently solving high-dimensional partial differential equations (PDEs). RBMs involve constructing a low-dimensional approximation space, known as the "reduced basis," through proper orthogonal decomposition or other dimensionality reduction techniques. This reduced space captures the dominant modes of the PDE solution and significantly reduces the computational complexity compared to traditional methods like finite element analysis. RBMs are particularly advantageous for parametric PDEs, where the solution depends on a set of input parameters, as they allow for rapid evaluations of solutions across parameter variations. By projecting the PDE onto the reduced basis, RBMs effectively transform the high-dimensional problem into a lower-dimensional one, facilitating real-time simulations, design optimization, and uncertainty quantification. This approach finds applications in various fields such as fluid dynamics, structural mechanics, and heat transfer, offering an elegant balance between accuracy and computational efficiency.}\\
+
+\textcolor{red}{ Physics-Informed Neural Networks (PINNs) have emerged as a promising approach for solving partial differential equations (PDEs) with remarkable efficiency and accuracy. Combining the power of neural networks with the governing equations of physical systems, PINNs offer a seamless integration of data-driven learning and domain-specific physics. Unlike traditional methods, PINNs bypass the need for explicit grid discretization and provide continuous solutions across the entire domain, adapting dynamically to complex geometries. This capability is particularly valuable in scenarios where analytical solutions are challenging or unavailable. As highlighted in recent research such as "Physics-Informed Neural Networks: A Deep Learning Framework for Solving Forward and Inverse Problems Involving Nonlinear Partial Differential Equations," PINNs have shown great success in a range of applications, including fluid dynamics, heat transfer, and structural mechanics. By minimizing the residual error of the governing equations and incorporating boundary and initial conditions, PINNs exhibit a unique ability to capture underlying physics while learning from sparse and noisy data. Their versatility, combined with the ability to leverage existing deep learning frameworks, positions PINNs as a transformative tool for advancing PDE-based modeling and simulation across interdisciplinary domains.}
+
+
 
 \subsection{Formalization of the problem}
 
@@ -240,9 +247,10 @@ functions, $\varGamma_D$ and $\varGamma_N$ provide a partition of the boundary $
 
 \section{Objectives}
 
-\subsection{General objective (\textcolor{red}{sólo uno})}
+\subsection{General objective}
 
 \begin{comment}
+  (\textcolor{red}{sólo uno})
   El objetivo general enmarca todo el trabajo. Está estrechamente relacionado con el
 título y con la pregunta de investigación y describe de intensión de la
 invesstigación.
@@ -255,9 +263,10 @@ Compare the performance of Neural Network asisted Reduced Basis Models (NN-RBMs)
 agains the Finite Element Method on a real-time context, by performing multiple simulations 
 of the blood flow through the carotid arthery.
 
-\subsection{Specific objectives (\textcolor{red}{3 o 4 objetivos})}
+\subsection{Specific objectives}
 
-\begin{comment}
+\begin{comment} 
+  (\textcolor{red}{3 o 4 objetivos})
   Son un conjunto de objetivos más pequeños que permitirán alcanzar el general.
   La estructura de un objetivo general es la siguiente: Verbo en infinitivo (uno
   solo) + qué (objeto de estudio) + cómo.
@@ -273,11 +282,12 @@ of the blood flow through the carotid arthery.
 
 \begin{itemize}
   \item Identify the principal differences on the implementation of NN-RBMs and PINN like models and FEM in a fluid mechanic context.
-  \item 
-  \item 
+  \item Assess the ability of NN-RBMs and PINNs to adapt to changing boundary conditions or parameters, compared to the FEM approach.
+  \item  Study the generalization capabilities of NN-RBMs and PINNs when trained on a specific set of data and tested on different scenarios, compared to FEM.
+  \item Analyze the dependency of NN-RBMs to the Snapshots used for the training on the model
 \end{itemize}
 
-\section{Justification (\textcolor{red}{4 o 5 párrafos})}
+\section{Justification}
 
 \begin{comment}
 
@@ -292,19 +302,20 @@ teórico o práctico y soportadas en literatura.
 
 \end{comment}
 
+\textcolor{red}{ Finally, this project aims to contribute to a deeper understanding of the advantages and limitations of neural NN-RBMs, PINNs and FEM in the context of real-time simulations of the Navier-Stokes equations. Guiding researchers and practitioners in selecting the most appropriate method for specific applications based on accuracy and computational efficiency considerations.}\\
 
-
-\section{Scope (\textcolor{red}{2 o 3 párrafos})}
+\section{Scope}
 
 \begin{comment}
+  \textcolor{red}{2 o 3 párrafos})
 
-Describe las principales barreras o limitaciones de la investigación,
-así como las principales herramientas y otros recursos que esperaba utilizar
-durante la ejecución del proyecto. También describe los principales
-resultados esperados de la investigación
+  Describe las principales barreras o limitaciones de la investigación,
+  así como las principales herramientas y otros recursos que esperaba utilizar
+  durante la ejecución del proyecto. También describe los principales
+  resultados esperados de la investigación
 \end{comment}
 
-The principal results expected from this project are \\
+
 
 Now then, it is clear that for this kind of project one of the biggest obstacles that it is possible
 to encounter when researching and implementing the model is the impossibility of carrying out
@@ -314,10 +325,10 @@ the numerical solution. However, since multiple models are implemented, and havi
 accepted method for the solution of Parameterized PDEs, it's solution will be used as an accepted solution 
 for validating the implemented models. 
 
-\section{State of the art (\textcolor{red}{5 a 6 párrafos})}
+\section{State of the art}
 
 \begin{comment}
-
+(\textcolor{red}{5 a 6 párrafos})
 Describe las principales referencias relacionadas con el problema. Este estado
 del arte puede referirse al problema o aplicación específica, o bien a los
 métodos aplicados para solucionarlo. No debes olvidar incluir los trabajos más
@@ -326,9 +337,11 @@ importantes y los más recientes.
 \end{comment}
 
 
-\section{Proposed methodology (\textcolor{red}{5 o 6 párrafos})}
+\section{Proposed methodology}
 
 \begin{comment}
+
+ (\textcolor{red}{5 o 6 párrafos})
 Describe en este apartado los métodos, técnicas, algoritmos, etc. que se
 utilizarán durante la ejecución del proyecto.
 

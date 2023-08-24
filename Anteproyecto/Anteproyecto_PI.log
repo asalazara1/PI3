@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.24)  23 AUG 2023 22:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.24)  23 AUG 2023 23:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -508,75 +508,105 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--131
  []
 
 Excluding 'comment' comment. Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
 
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.172 
-       [1] Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
+l.173 
+       [1]
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
+
+ []
+
+
+Overfull \hbox (29.51784pt too wide) in paragraph at lines 176--177
+\OT1/cmr/m/n/12 space cap-tures the dom-i-nant modes of the PDE so-lu-tion and sig-nif-i-cantly re-duces the com-pu-ta-tional
+ []
+
+
+Overfull \hbox (6.92029pt too wide) in paragraph at lines 176--177
+\OT1/cmr/m/n/12 com-plex-ity com-pared to tra-di-tional meth-ods like fi-nite el-e-ment anal-y-sis. RBMs are par-tic-u-larly
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
+Overfull \hbox (15.8327pt too wide) in paragraph at lines 178--179
+\OT1/cmr/m/n/12 solv-ing par-tial dif-fer-en-tial equa-tions (PDEs) with re-mark-able ef-fi-ciency and ac-cu-racy. Com-bin-ing
+ []
+
+
+Overfull \hbox (7.12444pt too wide) in paragraph at lines 178--179
+\OT1/cmr/m/n/12 data. Their ver-sa-til-ity, com-bined with the abil-ity to lever-age ex-ist-ing deep learn-ing frame-works,
+ []
+
+Excluding 'comment' comment.
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--229
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
-Excluding 'comment' comment. Excluding 'comment' comment. Excluding 'comment' comment. Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--236
 
  []
 
-[3] Excluding 'comment' comment. Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 344--352
+[3] Excluding 'comment' comment. Excluding 'comment' comment. Excluding 'comment' comment.
+Underfull \hbox (badness 10000) in paragraph at lines 305--306
+
+ []
+
+Excluding 'comment' comment. [4] Excluding 'comment' comment. Excluding 'comment' comment.
+Underfull \hbox (badness 10000) in paragraph at lines 357--365
 
  []
 
 Excluding 'comment' comment.
-Overfull \hbox (6.29132pt too wide) in paragraph at lines 398--399
+Overfull \hbox (6.29132pt too wide) in paragraph at lines 411--412
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 404--407
+Underfull \hbox (badness 10000) in paragraph at lines 417--420
 
  []
 
-[4] (./Anteproyecto_PI.bbl
+[5] (./Anteproyecto_PI.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 30--33
 \OT1/cmtt/m/n/12 com / support / cfd / learn-[]explore / caas / CloudHelp / cloudhelp / 2014 / ENU / SimCFD /
  []
 
-) [5] (./Anteproyecto_PI.aux)
+) [6] (./Anteproyecto_PI.aux)
 Package rerunfilecheck Info: File `Anteproyecto_PI.out' has not changed.
-(rerunfilecheck)             Checksum: 6AEBA38FA4F2709564642B59A3D3D601;2619.
+(rerunfilecheck)             Checksum: 18D48DC821CB61DF749C4B6647FFAF9E;1911.
  ) 
 Here is how much of TeX's memory you used:
- 13659 strings out of 478542
- 204729 string characters out of 5854402
- 551019 words of memory out of 5000000
- 31345 multiletter control sequences out of 15000+600000
+ 13658 strings out of 478542
+ 204719 string characters out of 5854402
+ 552019 words of memory out of 5000000
+ 31343 multiletter control sequences out of 15000+600000
  418071 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,13n,79p,1460b,432s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,13n,79p,1525b,432s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Anteproyecto_PI.pdf (6 pages, 214658 bytes).
+Output written on Anteproyecto_PI.pdf (7 pages, 216906 bytes).
 PDF statistics:
- 212 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
+ 218 PDF objects out of 1000 (max. 8388607)
+ 171 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
  110 words of extra memory for PDF output out of 10000 (max. 10000000)
 
