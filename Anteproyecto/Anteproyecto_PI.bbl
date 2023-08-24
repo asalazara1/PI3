@@ -1,32 +1,50 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{Ischemia}
-DeSai C, Shapshak AH.
-\newblock Cerebral Ischemia.
-\newblock StatPearls[Internet]. 2021.
-\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/books/NBK560510/}.
+\bibitem{logan2014applied}
+Logan JD.
+\newblock Applied partial differential equations.
+\newblock Springer; 2014.
 
-\bibitem{AnatoFisio}
-Guyton AC.
-\newblock anatomía y fisiología del sistema nervioso.
-\newblock Panamericana; 1997.
+\bibitem{farlow1993partial}
+Farlow SJ.
+\newblock Partial differential equations for scientists and engineers.
+\newblock Courier Corporation; 1993.
 
-\bibitem{johns_hopkins_medicine}
-{Johns Hopkins Medicine}. Types of Stroke; 2021.
-\newblock Available from:
-  \url{https://www.hopkinsmedicine.org/health/conditions-and-diseases/stroke/types-of-stroke}.
-
-\bibitem{burden}
-{American Heart Association}. 2021 Heart Disease \& Stroke Statistical Update
-  Fact Sheet Global Burden of Disease; 2021.
-\newblock Available from:
-  \url{https://professional.heart.org/-/media/phd-files-2/science-news/2/2021-heart-and-stroke-stat-update/2021_stat_update_factsheet_global_burden_of_disease.pdf?la=en}.
+\bibitem{strauss2007partial}
+Strauss WA.
+\newblock Partial differential equations: An introduction.
+\newblock John Wiley \& Sons; 2007.
 
 \bibitem{hesthaven2018non}
 Hesthaven JS, Ubbiali S.
 \newblock Non-intrusive reduced order modeling of nonlinear problems using
   neural networks.
 \newblock Journal of Computational Physics. 2018;363:55-78.
+
+\bibitem{PINNQuarteroni}
+Quarteroni A.
+\newblock Physics-Based and Data-Driven-Based Algorithms for the Simulation of
+  the Heart Function; 2023. .
+
+\bibitem{AutoDesk}
+{AutoDesk}. Finite Element vs Finite Volume; 2019.
+\newblock
+  \url{https://knowledge.autodesk.com/support/cfd/learn-explore/caas/CloudHelp/cloudhelp/2014/ENU/SimCFD/files/GUID-12A9AED8-2047-4D3A-BC80-82BE9CF47517-htm.html}.
+
+\bibitem{volumes}
+Eymard R, Herbin R, Gallouët T.
+\newblock Finite volume methods.
+\newblock Handbook of Numerical Analysis. 2002;7:713-1020.
+
+\bibitem{element}
+Zienkiewicz OC, Taylor RL, Nithiarasu P.
+\newblock The finite element method for fluid dynamics.
+\newblock Butterworth-Heinemann; 2005.
+
+\bibitem{quarteroni2009numerical}
+Quarteroni A, Quarteroni S.
+\newblock Numerical models for differential problems. vol.~2.
+\newblock Springer; 2009.
 
 \bibitem{reglamento2017}
 {Universidad EAFIT}. Reglamento de propiedad intelectual; 2017.

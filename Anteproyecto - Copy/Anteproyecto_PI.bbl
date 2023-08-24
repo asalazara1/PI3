@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{Ischemia}
+DeSai C, Shapshak AH.
+\newblock Cerebral Ischemia.
+\newblock StatPearls[Internet]. 2021.
+\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/books/NBK560510/}.
+
+\bibitem{AnatoFisio}
+Guyton AC.
+\newblock anatomía y fisiología del sistema nervioso.
+\newblock Panamericana; 1997.
+
+\bibitem{johns_hopkins_medicine}
+{Johns Hopkins Medicine}. Types of Stroke; 2021.
+\newblock Available from:
+  \url{https://www.hopkinsmedicine.org/health/conditions-and-diseases/stroke/types-of-stroke}.
+
+\bibitem{burden}
+{American Heart Association}. 2021 Heart Disease \& Stroke Statistical Update
+  Fact Sheet Global Burden of Disease; 2021.
+\newblock Available from:
+  \url{https://professional.heart.org/-/media/phd-files-2/science-news/2/2021-heart-and-stroke-stat-update/2021_stat_update_factsheet_global_burden_of_disease.pdf?la=en}.
+
+\bibitem{hesthaven2018non}
+Hesthaven JS, Ubbiali S.
+\newblock Non-intrusive reduced order modeling of nonlinear problems using
+  neural networks.
+\newblock Journal of Computational Physics. 2018;363:55-78.
+
+\bibitem{reglamento2017}
+{Universidad EAFIT}. Reglamento de propiedad intelectual; 2017.
+
+\end{thebibliography}

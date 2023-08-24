@@ -7,51 +7,51 @@ Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: references.bib
-Warning--empty author and editor in johns_hopkins_medicine
-Warning--missing publisher in johns_hopkins_medicine
-Warning--empty author and editor in burden
-Warning--missing publisher in burden
+Warning--empty booktitle in PINNQuarteroni
+Warning--empty pages in PINNQuarteroni
+Warning--empty author and editor in AutoDesk
+Warning--missing publisher in AutoDesk
 Warning--empty author and editor in reglamento2017
 Warning--missing publisher in reglamento2017
-You've used 6 entries,
+You've used 10 entries,
             3507 wiz_defined-function locations,
-            722 strings with 5712 characters,
-and the built_in function-call counts, 5802 in all, are:
-= -- 688
-> -- 37
-< -- 14
-+ -- 17
-- -- 9
-* -- 416
-:= -- 657
-add.period$ -- 17
-call.type$ -- 6
+            742 strings with 6061 characters,
+and the built_in function-call counts, 9458 in all, are:
+= -- 1071
+> -- 76
+< -- 33
++ -- 33
+- -- 17
+* -- 663
+:= -- 1072
+add.period$ -- 28
+call.type$ -- 10
 change.case$ -- 0
-chr.to.int$ -- 30
-cite$ -- 12
-duplicate$ -- 550
-empty$ -- 575
-format.name$ -- 10
-if$ -- 1377
+chr.to.int$ -- 71
+cite$ -- 16
+duplicate$ -- 838
+empty$ -- 952
+format.name$ -- 20
+if$ -- 2249
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 41
-newline$ -- 30
-num.names$ -- 6
-pop$ -- 120
+int.to.str$ -- 10
+missing$ -- 68
+newline$ -- 49
+num.names$ -- 10
+pop$ -- 212
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 99
+skip$ -- 156
 stack$ -- 0
-substring$ -- 884
-swap$ -- 87
-text.length$ -- 6
+substring$ -- 1460
+swap$ -- 158
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 6
-while$ -- 34
-width$ -- 7
-write$ -- 60
+while$ -- 57
+width$ -- 12
+write$ -- 99
 (There were 6 warnings)
