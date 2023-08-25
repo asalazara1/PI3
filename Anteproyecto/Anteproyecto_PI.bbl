@@ -26,25 +26,43 @@ Quarteroni A.
 \newblock Physics-Based and Data-Driven-Based Algorithms for the Simulation of
   the Heart Function; 2023. .
 
-\bibitem{AutoDesk}
-{AutoDesk}. Finite Element vs Finite Volume; 2019.
-\newblock
-  \url{https://knowledge.autodesk.com/support/cfd/learn-explore/caas/CloudHelp/cloudhelp/2014/ENU/SimCFD/files/GUID-12A9AED8-2047-4D3A-BC80-82BE9CF47517-htm.html}.
-
 \bibitem{volumes}
 Eymard R, Herbin R, Gallouët T.
 \newblock Finite volume methods.
 \newblock Handbook of Numerical Analysis. 2002;7:713-1020.
+
+\bibitem{AutoDesk}
+{AutoDesk}. Finite Element vs Finite Volume; 2019.
+\newblock
+  \url{https://knowledge.autodesk.com/support/cfd/learn-explore/caas/CloudHelp/cloudhelp/2014/ENU/SimCFD/files/GUID-12A9AED8-2047-4D3A-BC80-82BE9CF47517-htm.html}.
 
 \bibitem{element}
 Zienkiewicz OC, Taylor RL, Nithiarasu P.
 \newblock The finite element method for fluid dynamics.
 \newblock Butterworth-Heinemann; 2005.
 
+\bibitem{raissi2019physics}
+Raissi M, Perdikaris P, Karniadakis GE.
+\newblock Physics-informed neural networks: A deep learning framework for
+  solving forward and inverse problems involving nonlinear partial differential
+  equations.
+\newblock Journal of Computational physics. 2019;378:686-707.
+
 \bibitem{quarteroni2009numerical}
 Quarteroni A, Quarteroni S.
 \newblock Numerical models for differential problems. vol.~2.
 \newblock Springer; 2009.
+
+\bibitem{benner2017model}
+Benner P, Ohlberger M, Cohen A, Willcox K.
+\newblock Model reduction and approximation: theory and algorithms.
+\newblock SIAM; 2017.
+
+\bibitem{quarteroni2015reduced}
+Quarteroni A, Manzoni A, Negri F.
+\newblock Reduced basis methods for partial differential equations: an
+  introduction. vol.~92.
+\newblock Springer; 2015.
 
 \bibitem{reglamento2017}
 {Universidad EAFIT}. Reglamento de propiedad intelectual; 2017.
