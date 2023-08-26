@@ -1,17 +1,17 @@
 # Fdb version 3
-["bibtex Anteproyecto_PI"] 1692941377 "Anteproyecto_PI.aux" "Anteproyecto_PI.bbl" "Anteproyecto_PI" 1692941538
-  "Anteproyecto_PI.aux" 1692941536 3786 1015d1e0782b4859c101bb1f12893b87 "pdflatex"
+["bibtex Anteproyecto_PI"] 1693023113 "Anteproyecto_PI.aux" "Anteproyecto_PI.bbl" "Anteproyecto_PI" 1693024056
+  "Anteproyecto_PI.aux" 1693024055 4596 af517efb83a85b8b293845b7f6be3758 "pdflatex"
   "c:/texlive/2021/texmf-dist/bibtex/bst/vancouver/vancouver.bst" 1627111632 40624 ac6ae80a2b874e3abad2798e8fbde6a2 ""
-  "references.bib" 1692935285 8895 c950ac66a780209c1afe17dcd3280a37 ""
+  "references.bib" 1693022052 9178 4ef8aadb7de2e0134223207c88bc8ab2 ""
   (generated)
   "Anteproyecto_PI.blg"
   "Anteproyecto_PI.bbl"
-["pdflatex"] 1692941531 "c:/Users/Usuario/Documents/GitHub/PI3/Anteproyecto/Anteproyecto_PI.tex" "Anteproyecto_PI.pdf" "Anteproyecto_PI" 1692941538
-  "Anteproyecto_PI.aux" 1692941536 3786 1015d1e0782b4859c101bb1f12893b87 "pdflatex"
-  "Anteproyecto_PI.bbl" 1692941378 2238 5f21f586d2f7b8aaa8e84e44bc8e641d "bibtex Anteproyecto_PI"
-  "Anteproyecto_PI.out" 1692941536 1911 18d48dc821cb61df749c4b6647ffaf9e "pdflatex"
-  "Anteproyecto_PI.tex" 1692941529 25505 542f0d547642183543c591b2da303a15 ""
-  "c:/Users/Usuario/Documents/GitHub/PI3/Anteproyecto/Anteproyecto_PI.tex" 1692941529 25505 542f0d547642183543c591b2da303a15 ""
+["pdflatex"] 1693024053 "c:/Users/Usuario/Documents/GitHub/PI3/Anteproyecto/Anteproyecto_PI.tex" "Anteproyecto_PI.pdf" "Anteproyecto_PI" 1693024056
+  "Anteproyecto_PI.aux" 1693024055 4596 af517efb83a85b8b293845b7f6be3758 "pdflatex"
+  "Anteproyecto_PI.bbl" 1693023114 4585 0a0beafb525db698274512532f8b6128 "bibtex Anteproyecto_PI"
+  "Anteproyecto_PI.out" 1693024055 1911 18d48dc821cb61df749c4b6647ffaf9e "pdflatex"
+  "Anteproyecto_PI.tex" 1693024051 32229 18484719c5d71dd7ff3b3ab9e80e8c29 ""
+  "c:/Users/Usuario/Documents/GitHub/PI3/Anteproyecto/Anteproyecto_PI.tex" 1693024051 32229 18484719c5d71dd7ff3b3ab9e80e8c29 ""
   "c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1627094655 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1627098975 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1627097333 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -144,6 +144,6 @@
   "logo-eafit.png" 1690848110 15355 ec528fd687a3f6cc53478c45d5945a74 ""
   (generated)
   "Anteproyecto_PI.aux"
-  "Anteproyecto_PI.pdf"
-  "Anteproyecto_PI.out"
   "Anteproyecto_PI.log"
+  "Anteproyecto_PI.out"
+  "Anteproyecto_PI.pdf"

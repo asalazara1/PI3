@@ -53,6 +53,63 @@ Quarteroni A, Quarteroni S.
 \newblock Numerical models for differential problems. vol.~2.
 \newblock Springer; 2009.
 
+\bibitem{lin2023dynamic}
+Lin Y, Gao Z, Chen Y, Sun X.
+\newblock A Dynamic Mode Decomposition Based Reduced-Order Model For
+  Parameterized Time-Dependent Partial Differential Equations.
+\newblock Journal of Scientific Computing. 2023;95(3):70.
+
+\bibitem{zhao2023reduced}
+Zhao W, Piao GR.
+\newblock A reduced Galerkin finite element formulation based on proper
+  orthogonal decomposition for the generalized KDV-RLW-Rosenau equation.
+\newblock Journal of Inequalities and Applications. 2023;2023(1):1-22.
+
+\bibitem{kutyniok2022theoretical}
+Kutyniok G, Petersen P, Raslan M, Schneider R.
+\newblock A theoretical analysis of deep neural networks and parametric PDEs.
+\newblock Constructive Approximation. 2022;55(1):73-125.
+
+\bibitem{pichi2023graph}
+Pichi F, Moya B, Hesthaven JS.
+\newblock A graph convolutional autoencoder approach to model order reduction
+  for parametrized PDEs.
+\newblock arXiv preprint arXiv:230508573. 2023.
+
+\bibitem{fresca2021comprehensive}
+Fresca S, Dede’ L, Manzoni A.
+\newblock A comprehensive deep learning-based approach to reduced order
+  modeling of nonlinear time-dependent parametrized PDEs.
+\newblock Journal of Scientific Computing. 2021;87:1-36.
+
+\bibitem{berg2021neural}
+Berg J, Nystr{\"o}m K.
+\newblock Neural networks as smooth priors for inverse problems for PDEs.
+\newblock Journal of Computational Mathematics and Data Science. 2021;1:100008.
+
+\bibitem{meng2020composite}
+Meng X, Karniadakis GE.
+\newblock A composite neural network that learns from multi-fidelity data:
+  Application to function approximation and inverse PDE problems.
+\newblock Journal of Computational Physics. 2020;401:109020.
+
+\bibitem{moschou2023physics}
+Moschou SP, Hicks E, Parekh R, Mathew D, Majumdar S, Vlahakis N.
+\newblock Physics-Informed Neural Networks for modeling astrophysical shocks.
+\newblock Machine Learning: Science and Technology. 2023.
+
+\bibitem{xiao2023physics}
+Xiao MJ, Yu TC, Zhang YS, Yong H.
+\newblock Physics-informed neural networks for the Reynolds-Averaged
+  Navier--Stokes modeling of Rayleigh--Taylor turbulent mixing.
+\newblock Computers \& Fluids. 2023:106025.
+
+\bibitem{lino2023current}
+Lino M, Fotiadis S, Bharath AA, Cantwell CD.
+\newblock Current and emerging deep-learning methods for the simulation of
+  fluid dynamics.
+\newblock Proceedings of the Royal Society A. 2023;479(2275):20230058.
+
 \bibitem{benner2017model}
 Benner P, Ohlberger M, Cohen A, Willcox K.
 \newblock Model reduction and approximation: theory and algorithms.
