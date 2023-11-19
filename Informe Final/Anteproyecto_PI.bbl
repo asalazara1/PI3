@@ -1,0 +1,71 @@
+\begin{thebibliography}{10}
+
+\bibitem{logan2014applied}
+Logan JD.
+\newblock Applied partial differential equations.
+\newblock Springer; 2014.
+
+\bibitem{farlow1993partial}
+Farlow SJ.
+\newblock Partial differential equations for scientists and engineers.
+\newblock Courier Corporation; 1993.
+
+\bibitem{strauss2007partial}
+Strauss WA.
+\newblock Partial differential equations: An introduction.
+\newblock John Wiley \& Sons; 2007.
+
+\bibitem{hesthaven2018non}
+Hesthaven JS, Ubbiali S.
+\newblock Non-intrusive reduced order modeling of nonlinear problems using
+  neural networks.
+\newblock Journal of Computational Physics. 2018;363:55-78.
+
+\bibitem{PINNQuarteroni}
+Quarteroni A.
+\newblock Physics-Based and Data-Driven-Based Algorithms for the Simulation of
+  the Heart Function; 2023. .
+
+\bibitem{berg2021neural}
+Berg J, Nystr{\"o}m K.
+\newblock Neural networks as smooth priors for inverse problems for PDEs.
+\newblock Journal of Computational Mathematics and Data Science. 2021;1:100008.
+
+\bibitem{meng2020composite}
+Meng X, Karniadakis GE.
+\newblock A composite neural network that learns from multi-fidelity data:
+  Application to function approximation and inverse PDE problems.
+\newblock Journal of Computational Physics. 2020;401:109020.
+
+\bibitem{raissi2019physics}
+Raissi M, Perdikaris P, Karniadakis GE.
+\newblock Physics-informed neural networks: A deep learning framework for
+  solving forward and inverse problems involving nonlinear partial differential
+  equations.
+\newblock Journal of Computational physics. 2019;378:686-707.
+
+\bibitem{moschou2023physics}
+Moschou SP, Hicks E, Parekh R, Mathew D, Majumdar S, Vlahakis N.
+\newblock Physics-Informed Neural Networks for modeling astrophysical shocks.
+\newblock Machine Learning: Science and Technology. 2023.
+
+\bibitem{xiao2023physics}
+Xiao MJ, Yu TC, Zhang YS, Yong H.
+\newblock Physics-informed neural networks for the Reynolds-Averaged
+  Navier--Stokes modeling of Rayleigh--Taylor turbulent mixing.
+\newblock Computers \& Fluids. 2023:106025.
+
+\bibitem{lino2023current}
+Lino M, Fotiadis S, Bharath AA, Cantwell CD.
+\newblock Current and emerging deep-learning methods for the simulation of
+  fluid dynamics.
+\newblock Proceedings of the Royal Society A. 2023;479(2275):20230058.
+
+\bibitem{BFGS}
+Zhu C, Byrd RH, Lu P, Nocedal J.
+\newblock Algorithm 778: L-BFGS-B: Fortran Subroutines for Large-Scale
+  Bound-Constrained Optimization.
+\newblock ACM Trans Math Softw. 1997 dec;23(4):550–560.
+\newblock Available from: \url{https://doi.org/10.1145/279232.279236}.
+
+\end{thebibliography}
