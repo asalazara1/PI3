@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.24)  19 NOV 2023 00:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.7.24)  19 NOV 2023 23:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -375,14 +375,7 @@ Package: notoccite 2000/07/20
 File: l3backend-pdftex.def 2021-07-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count303
 \l__pdf_internal_box=\box56
-) (./Anteproyecto_PI.aux
-
-LaTeX Warning: Label `tab:NS21' multiply defined.
-
-
-LaTeX Warning: Label `tab:NS21' multiply defined.
-
-)
+) (./Anteproyecto_PI.aux)
 \openout1 = `Anteproyecto_PI.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
@@ -495,11 +488,16 @@ Package pdftex.def Info: logo-eafit.png  used on input line 47.
  [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logo-eafit.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
 Excluding 'comment' comment.
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
@@ -509,42 +507,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
-
- []
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.117 P
-       INNs are quite useful in this type of problems since, by incorporatin... [1] Excluding 'comment' comment. Excluding 'comment' comment.
+l.116 
+       [1] Excluding 'comment' comment. Excluding 'comment' comment.
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
-
- []
-
 Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
 
@@ -563,45 +556,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 362--363
 
  []
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 432--433
+[8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 452--453
 
  []
 
-[9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 537--538
+[10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 557--558
 
  []
 
-[11] [12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 648--649
+[12] [13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 678--679
 
  []
 
-[14] [15] (./Anteproyecto_PI.bbl [16]) [17] (./Anteproyecto_PI.aux)
+[15] [16] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 804--805
 
-LaTeX Warning: There were multiply-defined labels.
+ []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 806--807
+
+ []
+
+[18] (./Anteproyecto_PI.bbl [19]
+Underfull \hbox (badness 5316) in paragraph at lines 72--76
+\OT1/cmr/m/n/12 11-10.  []$\OT1/cmtt/m/n/12 https : / / cloud . google . com / compute / docs / general-[]purpose-[]machines #
+ []
+
+) [20] (./Anteproyecto_PI.aux)
 Package rerunfilecheck Info: File `Anteproyecto_PI.out' has not changed.
 (rerunfilecheck)             Checksum: 959C8DC12F25FD1AD3FA15BF5A2E846F;1810.
  ) 
 Here is how much of TeX's memory you used:
- 13722 strings out of 478542
- 205603 string characters out of 5854402
- 560539 words of memory out of 5000000
- 31366 multiletter control sequences out of 15000+600000
- 417712 words of font info for 82 fonts, out of 8000000 for 9000
+ 13740 strings out of 478542
+ 205874 string characters out of 5854402
+ 564762 words of memory out of 5000000
+ 31379 multiletter control sequences out of 15000+600000
+ 418960 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,14n,79p,939b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,14n,79p,1159b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Anteproyecto_PI.pdf (18 pages, 237850 bytes).
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on Anteproyecto_PI.pdf (21 pages, 256038 bytes).
 PDF statistics:
- 300 PDF objects out of 1000 (max. 8388607)
- 243 compressed objects within 3 object streams
- 79 named destinations out of 1000 (max. 500000)
+ 328 PDF objects out of 1000 (max. 8388607)
+ 266 compressed objects within 3 object streams
+ 84 named destinations out of 1000 (max. 500000)
  86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

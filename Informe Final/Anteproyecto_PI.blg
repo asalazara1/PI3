@@ -9,45 +9,48 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: references.bib
 Warning--empty booktitle in PINNQuarteroni
 Warning--empty pages in PINNQuarteroni
-You've used 12 entries,
+Warning--empty author and editor in GCP
+Warning--missing publisher in GCP
+Warning--there's a month but no year in GCP
+You've used 14 entries,
             3507 wiz_defined-function locations,
-            763 strings with 7044 characters,
-and the built_in function-call counts, 18771 in all, are:
-= -- 2141
-> -- 177
-< -- 105
-+ -- 65
-- -- 33
-* -- 1374
-:= -- 2037
-add.period$ -- 44
-call.type$ -- 12
-change.case$ -- 0
-chr.to.int$ -- 254
-cite$ -- 14
-duplicate$ -- 1806
-empty$ -- 1834
-format.name$ -- 39
-if$ -- 4470
+            777 strings with 7340 characters,
+and the built_in function-call counts, 20648 in all, are:
+= -- 2337
+> -- 193
+< -- 123
++ -- 71
+- -- 36
+* -- 1487
+:= -- 2249
+add.period$ -- 51
+call.type$ -- 14
+change.case$ -- 1
+chr.to.int$ -- 294
+cite$ -- 19
+duplicate$ -- 2001
+empty$ -- 2016
+format.name$ -- 41
+if$ -- 4915
 int.to.chr$ -- 0
-int.to.str$ -- 12
-missing$ -- 108
-newline$ -- 63
-num.names$ -- 12
-pop$ -- 328
+int.to.str$ -- 14
+missing$ -- 124
+newline$ -- 73
+num.names$ -- 14
+pop$ -- 377
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 219
+skip$ -- 254
 stack$ -- 0
-substring$ -- 3099
-swap$ -- 258
-text.length$ -- 20
+substring$ -- 3331
+swap$ -- 298
+text.length$ -- 27
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 101
-width$ -- 14
-write$ -- 129
-(There were 2 warnings)
+warning$ -- 5
+while$ -- 115
+width$ -- 16
+write$ -- 151
+(There were 5 warnings)

@@ -50,7 +50,7 @@
 
 \vfill
 \begin{center}
-  \LARGE Deep learning techniques for Blood Flow simulation based on Navier-Stokes Equations
+  \LARGE Physical-informed Neural Networks for the simulation of nonlinear partial differential equations in fluid dynamics
 \end{center}
 
 \vspace*{1cm}
@@ -83,11 +83,9 @@ Cristhian David Montoya Zambrano\footnote{School of Applied Sciences and Enginee
 
 \begin{abstract}
     
-  The purpose of this paper is to 
+  The purpose of this paper is to analyze the performance of Physical Informed Neural Networks for simulating fluid dynamics equations. This is made by the implementation of multiple architectures for solving multiples cases of both the Navier Stokes Equations and the Burgers Equations For later comparing the behavior of the $L^2$ Error of the outputs of each model.\\
   
-  present a simulation of blood flow through the carotid artery in two dimensions. The simulation is performed on a section of the artery extracted from an angiography, on which modifications are made to mimic the presence of stenosis in the artery. Finite element method is used to solve the linear simplification of the Navier-Stokes equations, seeking to identify variations in the pressure and velocity fields of the fluid and to analyze the impact of mild and severe cases of stenosis caused by atherosclerosis on human hemodynamics.\\
-  
-    \noindent \textbf{Keywords:} Finite element method, Computational fluid dynamics, Hemodynamics, Ischemia, Stroke 
+    \noindent \textbf{Keywords:} Computational fluid dynamics, Machine Learning, PINN, Nonlinear Partial Differential Equations
     \end{abstract}
 
 \section{Introduction}
@@ -116,7 +114,7 @@ One of the most commonly used numerical method for solving Partial Differential 
 
 PINNs are quite useful in this type of problems since, by incorporating the physical information of the system under study in the training of the neural networks, allowing the imposition of boundary conditions and governing equations directly on the network architecture, it facilitates the adaptation of the network to different conditions and geometries on which to solve the problem, in addition to potentially even improving the accuracy of the numerical solutions.
 
-Therefore thi project focuses on the implementation of multiple Physical Informed Neural Networks (PINNs) architechtures for solving Fluid Dynamic problems, seeking to observe and compare the performance of these architectures, aiming for a deeper understanding of the advantages and limitations of PINNs in the context of Fluid dynamics simulations.
+Therefore this project focuses on the implementation of multiple Physical Informed Neural Networks (PINNs) Architectures for solving Fluid Dynamic problems, seeking to observe and compare the performance of these architectures, aiming for a deeper understanding of the advantages and limitations of PINNs in the context of Fluid dynamics simulations.
 
 
 \begin{comment}
@@ -160,15 +158,16 @@ Incluye aspectos como:
 \end{itemize}
 \end{comment}
 
-As a means to achieve the objectives set for this project, a 3-stage methodology was proposed in which various mathematical methods were used. In the first stage a version of the Broyden–Fletcher–Goldfarb–Shanno algorithm, the L-BFGS-B optimization method, was implemented, which is the optimization method used for the training of the PINNs implemented. The second stage consisted on the implementation, training and validation of multiple PINN achitectures, which were used for solving both Burgers and Navier Stokes equations with a variety of cases for comparing the capacity of these Neural Networks for solving these problems. Finally the third stage was the aalysis of results and the comparison of the performances of the models implemented on the previous stage.\\
+As a means to achieve the objectives set for this project, a 3-stage methodology was proposed in which various mathematical methods were used. In the first stage a version of the Broyden–Fletcher–Goldfarb–Shanno algorithm, the L-BFGS-B optimization method, was implemented, which is the optimization method used for the training of the PINNs implemented. The second stage consisted of the implementation, training, and validation of multiple PINN architecture, which were used for solving both Burgers and Navier Stokes equations with a variety of cases for comparing the capacity of these Neural Networks for solving these problems. Finally, the third stage was the analysis of results and the comparison of the performances of the models implemented on the previous stage.\\
 
-Below both L-BFGS-B an PINN are explained with more detail for the reader to understand the nature of both algorithms and how they work.
+Below both L-BFGS-B and PINN are explained with more detail for the reader to understand the nature of both algorithms and how they work.
+
 
 \subsection{The Broyden–Fletcher–Goldfarb–Shanno algorithm}
 
 The Broyden-Fletcher-Goldfarb-Shanno (BFGS) algorithm is an iterative method for numerical optimization, specifically used for finding the minimum of a function. It falls under the category of quasi-Newton methods and is particularly well-suited for problems where the objective function is smooth and has continuous derivatives. The main goal of the BFGS algorithm is to iteratively update an approximation of the inverse Hessian matrix, which represents the local curvature of the objective function, to efficiently converge towards the minimum.\\
 
-At each iteration, the BFGS algorithm computes the gradient of the objective function with respect to the parameters, in order to subsequently update the current estimate of the inverse Hessian matrix based on the difference in gradients and parameter updates between iterations as shown in Equation \ref{Eq:Hess}. By utilizing this information, the algorithm generates a sequence of parameter values that progressively move closer to the optimal solution. Unlike Newton's method, BFGS avoids explicitly computing the Hessian matrix, which can be computationally expensive for large problems, by iteratively updating an approximation of it \cite{BFGS}.
+At each iteration, the BFGS algorithm computes the gradient of the objective function with respect to the parameters, in order to subsequently update the current estimate of the inverse Hessian matrix based on the difference in gradients and parameter updates between iterations as shown in Equation \ref{Eq:Hess}. By utilizing this information, the algorithm generates a sequence of parameter values that progressively move closer to the optimal solution. Unlike Newton's method, BFGS avoids explicitly computing the Hessian matrix, which can be computationally expensive for large problems, by iteratively updating an approximation of it. \cite{BFGS}.
 
 \begin{align}
   \label{Eq:Hess}
@@ -186,18 +185,19 @@ Physics-informed neural networks (PINNs) have emerged as a promising approach to
 
 Unlike traditional methods, PINNs avoid the need for explicit mesh discretization and provide continuous solutions throughout the domain, dynamically adapting to complex geometries. Their versatility, combined with the ability to leverage existing deep learning frameworks, positions PINNs as a transformative tool for advancing EDP-based modeling and simulation in interdisciplinary domains.\\
 
+For this project, the training of the PINNs was performed using the initial and boundary data of each problem as a set of training points and selecting a random set of points in the problem domain for the evaluation of the residual of the underlying equations, thus not requiring a previous solution of the equation for the training of the neural network.
 \section{Results}
 
-For this project three set of equations were considered with multiple scenarios and architechtures each. The main results obtained for each set of equations is presented below
+For this project three set of equations were considered with multiple scenarios and Architectures each. Each experiment was implemented on a Virtual Machine provided by Google Cloud platform with an e2-highmem-16 architecture which has 16 vCPU and 128 GB of RAM \cite{GCP}. The main results obtained for each set of equations is presented below.
 
 \subsection{1-dimentional Burgers' Equation}
 
 For the 1-dimentional Burgers0 Equation, three cases were implemeneted each with the listed three architectures:
 
 \begin{itemize}
-  \item Architechture 1: 5 hidden layers with 20 neurons each
-  \item Architechture 2: 5 hidden layers with 50 neurons each
-  \item Architechture 3: 8 hidden layers with 20 neurons each
+  \item Architecture 1: 5 hidden layers with 20 neurons each
+  \item Architecture 2: 5 hidden layers with 50 neurons each
+  \item Architecture 3: 8 hidden layers with 20 neurons each
 \end{itemize}
 
 \subsubsection*{Case 1:}
@@ -218,18 +218,18 @@ When solving Equation \ref{B1} with the architectures explained above, the follo
 \begin{table}[H]
   \begin{center}
   \begin{tabular}{ r | c  c }
-  \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-  0.0 & $ 4.1341\times 10^{-8}$ & $ 2.0332\times 10^{-3} $ \\
-  0.1 & $ 1.7436\times 10^{-8}$ & $ 1.3205\times 10^{-3} $ \\
-  0.2 & $ 9.8793\times 10^{-9}$ & $ 9.9395\times 10^{-4} $ \\
-  0.3 & $ 7.5820\times 10^{-9}$ & $ 8.7074\times 10^{-4} $ \\
-  0.4 & $ 5.1086\times 10^{-9}$ & $ 7.1475\times 10^{-4} $ \\
-  0.5 & $ 2.1645\times 10^{-9}$ & $ 4.6525\times 10^{-4} $ \\
-  0.6 & $ 1.1935\times 10^{-9}$ & $ 3.4546\times 10^{-4} $ \\
-  0.7 & $ 2.6267\times 10^{-9}$ & $ 5.1251\times 10^{-4} $ \\
-  0.8 & $ 2.9190\times 10^{-9}$ & $ 5.4027\times 10^{-4} $ \\
-  0.9 & $ 8.5705\times 10^{-10}$ & $ 2.9275\times 10^{-4} $ \\
-  1.0 & $ 1.0075\times 10^{-8}$ & $ 1.0037\times 10^{-3} $ \\
+  \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+  0.0 & $ 4.1430\times 10^{-8}$ & $ 2.0354\times 10^{-4} $ \\
+  0.1 & $ 1.7357\times 10^{-8}$ & $ 1.3175\times 10^{-4} $ \\
+  0.2 & $ 1.0056\times 10^{-8}$ & $ 1.0028\times 10^{-4} $ \\
+  0.3 & $ 7.8224\times 10^{-9}$ & $ 8.8444\times 10^{-5} $ \\
+  0.4 & $ 5.2395\times 10^{-9}$ & $ 7.2384\times 10^{-5} $ \\
+  0.5 & $ 2.1801\times 10^{-9}$ & $ 4.6691\times 10^{-5} $ \\
+  0.6 & $ 1.2080\times 10^{-9}$ & $ 3.4756\times 10^{-5} $ \\
+  0.7 & $ 2.7061\times 10^{-9}$ & $ 5.2020\times 10^{-5} $ \\
+  0.8 & $ 2.9751\times 10^{-9}$ & $ 5.4544\times 10^{-5} $ \\
+  0.9 & $ 8.7641\times 10^{-10}$ & $ 2.9604\times 10^{-5} $ \\
+  1.0 & $ 1.0935\times 10^{-8}$ & $ 1.0457\times 10^{-4} $ \\
   \end{tabular}
   \caption{Results for the first architecture in the first case of Burgers Equations}
   \label{tab:B11}
@@ -239,18 +239,18 @@ When solving Equation \ref{B1} with the architectures explained above, the follo
   \begin{table}[H]
     \begin{center}
     \begin{tabular}{ r | c  c }
-    \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-    0.0 & $ 4.8725\times 10^{-9}$ & $ 6.9803\times 10^{-4} $ \\
-    0.1 & $ 8.4316\times 10^{-9}$ & $ 9.1824\times 10^{-4} $ \\
-    0.2 & $ 1.3853\times 10^{-8}$ & $ 1.1770\times 10^{-3} $ \\
-    0.3 & $ 1.4626\times 10^{-8}$ & $ 1.2094\times 10^{-3} $ \\
-    0.4 & $ 1.0354\times 10^{-8}$ & $ 1.0176\times 10^{-3} $ \\
-    0.5 & $ 5.4203\times 10^{-9}$ & $ 7.3623\times 10^{-4} $ \\
-    0.6 & $ 4.0029\times 10^{-9}$ & $ 6.3269\times 10^{-4} $ \\
-    0.7 & $ 5.2350\times 10^{-9}$ & $ 7.2353\times 10^{-4} $ \\
-    0.8 & $ 4.1608\times 10^{-9}$ & $ 6.4504\times 10^{-4} $ \\
-    0.9 & $ 1.2808\times 10^{-9}$ & $ 3.5789\times 10^{-4} $ \\
-    1.0 & $ 2.4014\times 10^{-8}$ & $ 1.5497\times 10^{-3} $ \\
+    \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+    0.0 & $ 4.9834\times 10^{-9}$ & $ 7.0593\times 10^{-5} $ \\
+    0.1 & $ 8.7334\times 10^{-9}$ & $ 9.3453\times 10^{-5} $ \\
+    0.2 & $ 1.4264\times 10^{-8}$ & $ 1.1943\times 10^{-4} $ \\
+    0.3 & $ 1.4884\times 10^{-8}$ & $ 1.2200\times 10^{-4} $ \\
+    0.4 & $ 1.0369\times 10^{-8}$ & $ 1.0183\times 10^{-4} $ \\
+    0.5 & $ 5.4275\times 10^{-9}$ & $ 7.3671\times 10^{-5} $ \\
+    0.6 & $ 4.2357\times 10^{-9}$ & $ 6.5083\times 10^{-5} $ \\
+    0.7 & $ 5.5986\times 10^{-9}$ & $ 7.4824\times 10^{-5} $ \\
+    0.8 & $ 4.3080\times 10^{-9}$ & $ 6.5635\times 10^{-5} $ \\
+    0.9 & $ 1.3539\times 10^{-9}$ & $ 3.6795\times 10^{-5} $ \\
+    1.0 & $ 2.6247\times 10^{-8}$ & $ 1.6201\times 10^{-4} $ \\
     \end{tabular}
     \caption{Results for the second architecture in the first case of Burgers Equations}
     \label{tab:B12}
@@ -260,18 +260,18 @@ When solving Equation \ref{B1} with the architectures explained above, the follo
     \begin{table}[H]
       \begin{center}
       \begin{tabular}{ r | c  c }
-      \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-      0.0 & $ 2.7134\times 10^{-9}$ & $ 5.2090\times 10^{-4} $ \\
-      0.1 & $ 1.2367\times 10^{-9}$ & $ 3.5167\times 10^{-4} $ \\
-      0.2 & $ 4.1095\times 10^{-9}$ & $ 6.4105\times 10^{-4} $ \\
-      0.3 & $ 6.9692\times 10^{-9}$ & $ 8.3482\times 10^{-4} $ \\
-      0.4 & $ 6.4658\times 10^{-9}$ & $ 8.0410\times 10^{-4} $ \\
-      0.5 & $ 4.1114\times 10^{-9}$ & $ 6.4120\times 10^{-4} $ \\
-      0.6 & $ 2.0376\times 10^{-9}$ & $ 4.5139\times 10^{-4} $ \\
-      0.7 & $ 8.9270\times 10^{-10}$ & $ 2.9878\times 10^{-4} $ \\
-      0.8 & $ 4.2240\times 10^{-10}$ & $ 2.0552\times 10^{-4} $ \\
-      0.9 & $ 3.2816\times 10^{-10}$ & $ 1.8115\times 10^{-4} $ \\
-      1.0 & $ 1.0638\times 10^{-9}$ & $ 3.2616\times 10^{-4} $ \\
+      \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+      0.0 & $ 2.7108\times 10^{-9}$ & $ 5.2065\times 10^{-5} $ \\
+      0.1 & $ 1.2982\times 10^{-9}$ & $ 3.6030\times 10^{-5} $ \\
+      0.2 & $ 4.2802\times 10^{-9}$ & $ 6.5424\times 10^{-5} $ \\
+      0.3 & $ 7.1932\times 10^{-9}$ & $ 8.4813\times 10^{-5} $ \\
+      0.4 & $ 6.6241\times 10^{-9}$ & $ 8.1388\times 10^{-5} $ \\
+      0.5 & $ 4.1758\times 10^{-9}$ & $ 6.4621\times 10^{-5} $ \\
+      0.6 & $ 2.0452\times 10^{-9}$ & $ 4.5224\times 10^{-5} $ \\
+      0.7 & $ 8.8635\times 10^{-10}$ & $ 2.9772\times 10^{-5} $ \\
+      0.8 & $ 4.2484\times 10^{-10}$ & $ 2.0612\times 10^{-5} $ \\
+      0.9 & $ 3.2664\times 10^{-10}$ & $ 1.8073\times 10^{-5} $ \\
+      1.0 & $ 1.0409\times 10^{-9}$ & $ 3.2263\times 10^{-5} $ \\
       \end{tabular}
       \caption{Results for the third architecture in the first case of Burgers Equations}
       \label{tab:B13}
@@ -295,18 +295,18 @@ When solving Equation \ref{B2} with the architectures explained above, the follo
 \begin{table}[H]
   \begin{center}
   \begin{tabular}{ r | c  c }
-  \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-  0.0 & $ 2.7535\times 10^{-1}$ & $ 5.2474 $ \\
-  0.1 & $ 1.9203\times 10^{-1}$ & $ 4.3821 $ \\
-  0.2 & $ 1.2686\times 10^{-1}$ & $ 3.5618 $ \\
-  0.3 & $ 7.7156\times 10^{-2}$ & $ 2.7777 $ \\
-  0.4 & $ 4.0875\times 10^{-2}$ & $ 2.0218 $ \\
-  0.5 & $ 1.6563\times 10^{-2}$ & $ 1.2870 $ \\
-  0.6 & $ 3.2628\times 10^{-3}$ & $ 0.5712 $ \\
-  0.7 & $ 4.6056\times 10^{-4}$ & $ 0.2146 $ \\
-  0.8 & $ 8.0537\times 10^{-3}$ & $ 0.8974 $ \\
-  0.9 & $ 2.6332\times 10^{-2}$ & $ 1.6227 $ \\
-  1.0 & $ 5.5973\times 10^{-2}$ & $ 2.3659 $ \\
+  \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+  0.0 & $ 3.9986\times 10^{-9}$ & $ 6.3234\times 10^{-5} $ \\
+  0.1 & $ 3.0841\times 10^{-9}$ & $ 5.5534\times 10^{-5} $ \\
+  0.2 & $ 8.1619\times 10^{-10}$ & $ 2.8569\times 10^{-5} $ \\
+  0.3 & $ 4.8544\times 10^{-9}$ & $ 6.9673\times 10^{-5} $ \\
+  0.4 & $ 1.4056\times 10^{-8}$ & $ 1.1856\times 10^{-4} $ \\
+  0.5 & $ 1.4323\times 10^{-8}$ & $ 1.1968\times 10^{-4} $ \\
+  0.6 & $ 4.6711\times 10^{-9}$ & $ 6.8346\times 10^{-5} $ \\
+  0.7 & $ 3.4578\times 10^{-9}$ & $ 5.8803\times 10^{-5} $ \\
+  0.8 & $ 1.9748\times 10^{-8}$ & $ 1.4053\times 10^{-4} $ \\
+  0.9 & $ 2.2694\times 10^{-8}$ & $ 1.5064\times 10^{-4} $ \\
+  1.0 & $ 1.0653\times 10^{-8}$ & $ 1.0321\times 10^{-4} $ \\
   \end{tabular}
   \caption{Results for the first architecture in the second case of Burgers Equations}
   \label{tab:B21}
@@ -316,18 +316,18 @@ When solving Equation \ref{B2} with the architectures explained above, the follo
   \begin{table}[H]
     \begin{center}
     \begin{tabular}{ r | c  c }
-    \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-    0.0 & $ 2.7545\times 10^{-1}$ & $ 5.2483 $ \\
-    0.1 & $ 1.9191\times 10^{-1}$ & $ 4.3807 $ \\
-    0.2 & $ 1.2675\times 10^{-1}$ & $ 3.5602 $ \\
-    0.3 & $ 7.7123\times 10^{-2}$ & $ 2.7771 $ \\
-    0.4 & $ 4.0908\times 10^{-2}$ & $ 2.0226 $ \\
-    0.5 & $ 1.6612\times 10^{-2}$ & $ 1.2889 $ \\
-    0.6 & $ 3.2859\times 10^{-3}$ & $ 0.5732 $ \\
-    0.7 & $ 4.5513\times 10^{-4}$ & $ 0.2133 $ \\
-    0.8 & $ 8.0546\times 10^{-3}$ & $ 0.8975 $ \\
-    0.9 & $ 2.6372\times 10^{-2}$ & $ 1.6239 $ \\
-    1.0 & $ 5.5989\times 10^{-2}$ & $ 2.3662 $ \\
+    \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+    0.0 & $ 5.5798\times 10^{-8}$ & $ 2.3622\times 10^{-4} $ \\
+    0.1 & $ 5.7194\times 10^{-8}$ & $ 2.3915\times 10^{-4} $ \\
+    0.2 & $ 1.3271\times 10^{-7}$ & $ 3.6430\times 10^{-4} $ \\
+    0.3 & $ 1.1661\times 10^{-7}$ & $ 3.4148\times 10^{-4} $ \\
+    0.4 & $ 4.7579\times 10^{-8}$ & $ 2.1813\times 10^{-4} $ \\
+    0.5 & $ 6.0910\times 10^{-9}$ & $ 7.8045\times 10^{-5} $ \\
+    0.6 & $ 2.9455\times 10^{-8}$ & $ 1.7162\times 10^{-4} $ \\
+    0.7 & $ 8.0868\times 10^{-8}$ & $ 2.8437\times 10^{-4} $ \\
+    0.8 & $ 7.7610\times 10^{-8}$ & $ 2.7859\times 10^{-4} $ \\
+    0.9 & $ 1.4173\times 10^{-8}$ & $ 1.1905\times 10^{-4} $ \\
+    1.0 & $ 3.4448\times 10^{-7}$ & $ 5.8693\times 10^{-4} $ \\
     \end{tabular}
     \caption{Results for the second architecture in the second case of Burgers Equations}
     \label{tab:B22}
@@ -337,18 +337,18 @@ When solving Equation \ref{B2} with the architectures explained above, the follo
     \begin{table}[H]
       \begin{center}
       \begin{tabular}{ r | c  c }
-      \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-      0.0 & $ 2.7520\times 10^{-1}$ & $ 5.2459 $ \\
-      0.1 & $ 1.9223\times 10^{-1}$ & $ 4.3844 $ \\
-      0.2 & $ 1.2703\times 10^{-1}$ & $ 3.5641 $ \\
-      0.3 & $ 7.7172\times 10^{-2}$ & $ 2.7780 $ \\
-      0.4 & $ 4.0783\times 10^{-2}$ & $ 2.0195 $ \\
-      0.5 & $ 1.6462\times 10^{-2}$ & $ 1.2830 $ \\
-      0.6 & $ 3.2196\times 10^{-3}$ & $ 0.5674 $ \\
-      0.7 & $ 4.6870\times 10^{-4}$ & $ 0.2165 $ \\
-      0.8 & $ 8.0401\times 10^{-3}$ & $ 0.8967 $ \\
-      0.9 & $ 2.6244\times 10^{-2}$ & $ 1.6200 $ \\
-      1.0 & $ 5.5965\times 10^{-2}$ & $ 2.3657 $ \\
+      \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+      0.0 & $ 5.8925\times 10^{-8}$ & $ 2.4274\times 10^{-4} $ \\
+      0.1 & $ 6.7472\times 10^{-8}$ & $ 2.5975\times 10^{-4} $ \\
+      0.2 & $ 7.6371\times 10^{-8}$ & $ 2.7635\times 10^{-4} $ \\
+      0.3 & $ 3.8459\times 10^{-8}$ & $ 1.9611\times 10^{-4} $ \\
+      0.4 & $ 6.7915\times 10^{-8}$ & $ 2.6061\times 10^{-4} $ \\
+      0.5 & $ 1.4779\times 10^{-7}$ & $ 3.8444\times 10^{-4} $ \\
+      0.6 & $ 1.5428\times 10^{-7}$ & $ 3.9279\times 10^{-4} $ \\
+      0.7 & $ 6.3770\times 10^{-8}$ & $ 2.5253\times 10^{-4} $ \\
+      0.8 & $ 1.3139\times 10^{-8}$ & $ 1.1462\times 10^{-4} $ \\
+      0.9 & $ 3.3779\times 10^{-8}$ & $ 1.8379\times 10^{-4} $ \\
+      1.0 & $ 8.7593\times 10^{-8}$ & $ 2.9596\times 10^{-4} $ \\
       \end{tabular}
       \caption{Results for the third architecture in the second case of Burgers Equations}
       \label{tab:B23}
@@ -373,8 +373,18 @@ When solving Equation \ref{B2} with the architectures explained above, the follo
   \begin{table}[H]
     \begin{center}
     \begin{tabular}{ r | c  c }
-    \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-
+    \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+    0.0 & $ 1.8636\times 10^{-9}$ & $ 4.3169\times 10^{-5} $ \\
+    0.1 & $ 1.1989\times 10^{-9}$ & $ 3.4625\times 10^{-5} $ \\
+    0.2 & $ 4.6511\times 10^{-9}$ & $ 6.8199\times 10^{-5} $ \\
+    0.3 & $ 1.0917\times 10^{-8}$ & $ 1.0449\times 10^{-4} $ \\
+    0.4 & $ 1.0227\times 10^{-8}$ & $ 1.0113\times 10^{-4} $ \\
+    0.5 & $ 2.8382\times 10^{-9}$ & $ 5.3275\times 10^{-5} $ \\
+    0.6 & $ 2.3910\times 10^{-9}$ & $ 4.8898\times 10^{-5} $ \\
+    0.7 & $ 1.4141\times 10^{-8}$ & $ 1.1892\times 10^{-4} $ \\
+    0.8 & $ 1.9828\times 10^{-8}$ & $ 1.4081\times 10^{-4} $ \\
+    0.9 & $ 5.3809\times 10^{-9}$ & $ 7.3355\times 10^{-5} $ \\
+    1.0 & $ 4.0183\times 10^{-8}$ & $ 2.0046\times 10^{-4} $ \\
     \end{tabular}
     \caption{Results for the first architecture in the third case of Burgers Equations}
     \label{tab:B31}
@@ -384,8 +394,18 @@ When solving Equation \ref{B2} with the architectures explained above, the follo
     \begin{table}[H]
       \begin{center}
       \begin{tabular}{ r | c  c }
-      \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-
+      \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+      0.0 & $ 5.2489\times 10^{-9}$ & $ 7.2449\times 10^{-5} $ \\
+      0.1 & $ 4.4637\times 10^{-9}$ & $ 6.6811\times 10^{-5} $ \\
+      0.2 & $ 1.3846\times 10^{-8}$ & $ 1.1767\times 10^{-4} $ \\
+      0.3 & $ 1.2864\times 10^{-8}$ & $ 1.1342\times 10^{-4} $ \\
+      0.4 & $ 4.8487\times 10^{-9}$ & $ 6.9632\times 10^{-5} $ \\
+      0.5 & $ 2.0942\times 10^{-9}$ & $ 4.5762\times 10^{-5} $ \\
+      0.6 & $ 9.1584\times 10^{-9}$ & $ 9.5699\times 10^{-5} $ \\
+      0.7 & $ 1.5329\times 10^{-8}$ & $ 1.2381\times 10^{-4} $ \\
+      0.8 & $ 7.8916\times 10^{-9}$ & $ 8.8835\times 10^{-5} $ \\
+      0.9 & $ 2.3779\times 10^{-9}$ & $ 4.8764\times 10^{-5} $ \\
+      1.0 & $ 7.9247\times 10^{-8}$ & $ 2.8151\times 10^{-4} $ \\
       \end{tabular}
       \caption{Results for the second architecture in the third case of Burgers Equations}
       \label{tab:B32}
@@ -395,18 +415,18 @@ When solving Equation \ref{B2} with the architectures explained above, the follo
       \begin{table}[H]
         \begin{center}
         \begin{tabular}{ r | c  c }
-        \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-        0.0 & $ 3.9095\times 10^{-9}$ & $ 6.2526\times 10^{-4} $ \\
-        0.1 & $ 4.0976\times 10^{-9}$ & $ 6.4012\times 10^{-4} $ \\
-        0.2 & $ 1.2145\times 10^{-8}$ & $ 1.1020\times 10^{-3} $ \\
-        0.3 & $ 1.9778\times 10^{-8}$ & $ 1.4063\times 10^{-3} $ \\
-        0.4 & $ 2.1008\times 10^{-8}$ & $ 1.4494\times 10^{-3} $ \\
-        0.5 & $ 1.3044\times 10^{-8}$ & $ 1.1421\times 10^{-3} $ \\
-        0.6 & $ 3.4472\times 10^{-9}$ & $ 5.8713\times 10^{-4} $ \\
-        0.7 & $ 1.7965\times 10^{-9}$ & $ 4.2385\times 10^{-4} $ \\
-        0.8 & $ 6.2565\times 10^{-9}$ & $ 7.9098\times 10^{-4} $ \\
-        0.9 & $ 4.9122\times 10^{-9}$ & $ 7.0087\times 10^{-4} $ \\
-        1.0 & $ 1.9582\times 10^{-8}$ & $ 1.3994\times 10^{-3} $ \\
+        \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+        0.0 & $ 2.1867\times 10^{-8}$ & $ 1.4788\times 10^{-4} $ \\
+        0.1 & $ 6.7413\times 10^{-9}$ & $ 8.2105\times 10^{-5} $ \\
+        0.2 & $ 4.0810\times 10^{-9}$ & $ 6.3883\times 10^{-5} $ \\
+        0.3 & $ 2.5088\times 10^{-8}$ & $ 1.5839\times 10^{-4} $ \\
+        0.4 & $ 3.4817\times 10^{-8}$ & $ 1.8659\times 10^{-4} $ \\
+        0.5 & $ 1.5709\times 10^{-8}$ & $ 1.2534\times 10^{-4} $ \\
+        0.6 & $ 3.1670\times 10^{-9}$ & $ 5.6276\times 10^{-5} $ \\
+        0.7 & $ 2.1016\times 10^{-8}$ & $ 1.4497\times 10^{-4} $ \\
+        0.8 & $ 3.4413\times 10^{-8}$ & $ 1.8551\times 10^{-4} $ \\
+        0.9 & $ 1.0148\times 10^{-8}$ & $ 1.0074\times 10^{-4} $ \\
+        1.0 & $ 4.2785\times 10^{-8}$ & $ 2.0684\times 10^{-4} $ \\
         \end{tabular}
         \caption{Results for the third architecture in the third case of Burgers Equations}
         \label{tab:B33}
@@ -418,10 +438,10 @@ When solving Equation \ref{B2} with the architectures explained above, the follo
 For the 1-dimentional Navier-Stokes Equations, two cases were implemeneted each with the listed four architectures:
 
 \begin{itemize}
-  \item Architechture 1: 5 hidden layers with 20 neurons each
-  \item Architechture 2: 5 hidden layers with 50 neurons each
-  \item Architechture 3: 8 hidden layers with 20 neurons each
-  \item Architechture 4: 8 hidden layers with 50 neurons each
+  \item Architecture 1: 5 hidden layers with 20 neurons each
+  \item Architecture 2: 5 hidden layers with 50 neurons each
+  \item Architecture 3: 8 hidden layers with 20 neurons each
+  \item Architecture 4: 8 hidden layers with 50 neurons each
 \end{itemize}
 
 \subsubsection*{Case 1:}
@@ -444,18 +464,18 @@ When solving Equation \ref{NS11} with the architectures explained above, the fol
   \begin{center}
   \begin{tabular}{ r | c  c | c  c}
     & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-  \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-  0.0 & $ 1.9646\times 10^{-7}$ & $ 0.0044 $ & $ 9.8202\times 10^{-6 }$ & $ 0.0313$ \\
-  0.1 & $ 6.8350\times 10^{-7}$ & $ 0.0083 $ & $ 1.2453\times 10^{-5 }$ & $ 0.0353$ \\
-  0.2 & $ 1.7235\times 10^{-6}$ & $ 0.0131 $ & $ 1.6410\times 10^{-5 }$ & $ 0.0405$ \\
-  0.3 & $ 3.2262\times 10^{-6}$ & $ 0.0180 $ & $ 2.1246\times 10^{-5 }$ & $ 0.0461$ \\
-  0.4 & $ 5.4656\times 10^{-6}$ & $ 0.0234 $ & $ 2.7291\times 10^{-5 }$ & $ 0.0522$ \\
-  0.5 & $ 8.6866\times 10^{-6}$ & $ 0.0295 $ & $ 3.4859\times 10^{-5 }$ & $ 0.0590$ \\
-  0.6 & $ 1.3048\times 10^{-5}$ & $ 0.0361 $ & $ 4.3914\times 10^{-5 }$ & $ 0.0663$ \\
-  0.7 & $ 1.8639\times 10^{-5}$ & $ 0.0432 $ & $ 5.3911\times 10^{-5 }$ & $ 0.0734$ \\
-  0.8 & $ 2.5493\times 10^{-5}$ & $ 0.0505 $ & $ 6.3784\times 10^{-5 }$ & $ 0.0799$ \\
-  0.9 & $ 3.3628\times 10^{-5}$ & $ 0.0580 $ & $ 7.2126\times 10^{-5 }$ & $ 0.0849$ \\
-  1.0 & $ 4.3075\times 10^{-5}$ & $ 0.0656 $ & $ 7.7515\times 10^{-5 }$ & $ 0.0880$ \\
+  \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+  0.0 & $ 1.9714\times 10^{-7}$ & $ 4.4401\times 10^{-4} $ & $ 9.8200\times 10^{-6} $ & $ 3.1337\times 10^{-3}$ \\
+  0.1 & $ 6.8281\times 10^{-7}$ & $ 8.2633\times 10^{-4} $ & $ 1.2453\times 10^{-5} $ & $ 3.5289\times 10^{-3}$ \\
+  0.2 & $ 1.7221\times 10^{-6}$ & $ 1.3123\times 10^{-3} $ & $ 1.6410\times 10^{-5} $ & $ 4.0509\times 10^{-3}$ \\
+  0.3 & $ 3.2257\times 10^{-6}$ & $ 1.7960\times 10^{-3} $ & $ 2.1246\times 10^{-5} $ & $ 4.6094\times 10^{-3}$ \\
+  0.4 & $ 5.4655\times 10^{-6}$ & $ 2.3378\times 10^{-3} $ & $ 2.7291\times 10^{-5} $ & $ 5.2241\times 10^{-3}$ \\
+  0.5 & $ 8.6866\times 10^{-6}$ & $ 2.9473\times 10^{-3} $ & $ 3.4859\times 10^{-5} $ & $ 5.9041\times 10^{-3}$ \\
+  0.6 & $ 1.3048\times 10^{-5}$ & $ 3.6123\times 10^{-3} $ & $ 4.3914\times 10^{-5} $ & $ 6.6268\times 10^{-3}$ \\
+  0.7 & $ 1.8638\times 10^{-5}$ & $ 4.3172\times 10^{-3} $ & $ 5.3911\times 10^{-5} $ & $ 7.3424\times 10^{-3}$ \\
+  0.8 & $ 2.5494\times 10^{-5}$ & $ 5.0491\times 10^{-3} $ & $ 6.3783\times 10^{-5} $ & $ 7.9865\times 10^{-3}$ \\
+  0.9 & $ 3.3628\times 10^{-5}$ & $ 5.7990\times 10^{-3} $ & $ 7.2126\times 10^{-5} $ & $ 8.4927\times 10^{-3}$ \\
+  1.0 & $ 4.3075\times 10^{-5}$ & $ 6.5632\times 10^{-3} $ & $ 7.7514\times 10^{-5} $ & $ 8.8042\times 10^{-3}$ \\
   \end{tabular}
   \caption{Results for the first architecture in the first case of the 1-dimensional Navier-Stokes Equations}
   \label{tab:NS111}
@@ -466,18 +486,18 @@ When solving Equation \ref{NS11} with the architectures explained above, the fol
     \begin{center}
     \begin{tabular}{ r | c  c | c  c}
       & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-    \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-    0.0 & $ 9.8856\times 10^{-9}$ & $ 0.0010 $ & $ 2.4502\times 10^{-6 }$ & $ 0.0157$ \\
-    0.1 & $ 2.4990\times 10^{-7}$ & $ 0.0050 $ & $ 2.4867\times 10^{-6 }$ & $ 0.0158$ \\
-    0.2 & $ 7.4739\times 10^{-7}$ & $ 0.0086 $ & $ 3.3587\times 10^{-6 }$ & $ 0.0183$ \\
-    0.3 & $ 1.4044\times 10^{-6}$ & $ 0.0119 $ & $ 5.0945\times 10^{-6 }$ & $ 0.0226$ \\
-    0.4 & $ 2.2494\times 10^{-6}$ & $ 0.0150 $ & $ 7.7558\times 10^{-6 }$ & $ 0.0278$ \\
-    0.5 & $ 3.3342\times 10^{-6}$ & $ 0.0183 $ & $ 1.1329\times 10^{-5 }$ & $ 0.0337$ \\
-    0.6 & $ 4.7053\times 10^{-6}$ & $ 0.0217 $ & $ 1.5696\times 10^{-5 }$ & $ 0.0396$ \\
-    0.7 & $ 6.3922\times 10^{-6}$ & $ 0.0253 $ & $ 2.0645\times 10^{-5 }$ & $ 0.0454$ \\
-    0.8 & $ 8.3984\times 10^{-6}$ & $ 0.0290 $ & $ 2.5889\times 10^{-5 }$ & $ 0.0509$ \\
-    0.9 & $ 1.0697\times 10^{-5}$ & $ 0.0327 $ & $ 3.1097\times 10^{-5} $ & $ 0.0558$ \\
-    1.0 & $ 1.3233\times 10^{-5}$ & $ 0.0364 $ & $ 3.5934\times 10^{-5 }$ & $ 0.0599$ \\
+    \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+    0.0 & $ 9.6309\times 10^{-9}$ & $ 9.8137\times 10^{-5} $ & $ 2.4499\times 10^{-6} $ & $ 1.5652\times 10^{-3}$ \\
+    0.1 & $ 2.4987\times 10^{-7}$ & $ 4.9987\times 10^{-4} $ & $ 2.4866\times 10^{-6} $ & $ 1.5769\times 10^{-3}$ \\
+    0.2 & $ 7.4725\times 10^{-7}$ & $ 8.6443\times 10^{-4} $ & $ 3.3586\times 10^{-6} $ & $ 1.8326\times 10^{-3}$ \\
+    0.3 & $ 1.4043\times 10^{-6}$ & $ 1.1850\times 10^{-3} $ & $ 5.0944\times 10^{-6} $ & $ 2.2571\times 10^{-3}$ \\
+    0.4 & $ 2.2494\times 10^{-6}$ & $ 1.4998\times 10^{-3} $ & $ 7.7559\times 10^{-6} $ & $ 2.7849\times 10^{-3}$ \\
+    0.5 & $ 3.3342\times 10^{-6}$ & $ 1.8260\times 10^{-3} $ & $ 1.1329\times 10^{-5} $ & $ 3.3658\times 10^{-3}$ \\
+    0.6 & $ 4.7054\times 10^{-6}$ & $ 2.1692\times 10^{-3} $ & $ 1.5696\times 10^{-5} $ & $ 3.9618\times 10^{-3}$ \\
+    0.7 & $ 6.3922\times 10^{-6}$ & $ 2.5283\times 10^{-3} $ & $ 2.0645\times 10^{-5} $ & $ 4.5437\times 10^{-3}$ \\
+    0.8 & $ 8.3984\times 10^{-6}$ & $ 2.8980\times 10^{-3} $ & $ 2.5889\times 10^{-5} $ & $ 5.0881\times 10^{-3}$ \\
+    0.9 & $ 1.0697\times 10^{-5}$ & $ 3.2707\times 10^{-3} $ & $ 3.1097\times 10^{-5} $ & $ 5.5765\times 10^{-3}$ \\
+    1.0 & $ 1.3233\times 10^{-5}$ & $ 3.6377\times 10^{-3} $ & $ 3.5934\times 10^{-5} $ & $ 5.9945\times 10^{-3}$ \\
     \end{tabular}
     \caption{Results for the second architecture in the first case of the 1-dimensional Navier-Stokes Equations}
     \label{tab:NS112}
@@ -488,18 +508,18 @@ When solving Equation \ref{NS11} with the architectures explained above, the fol
       \begin{center}
       \begin{tabular}{ r | c  c | c  c}
         & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-      \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-      0.0 & $ 6.1127\times 10^{-7}$ & $ 0.0078 $ & $ 1.1934\times 10^{-4} $ & $ 0.1092$ \\
-      0.1 & $ 1.0509\times 10^{-5}$ & $ 0.0324 $ & $ 2.1964\times 10^{-4} $ & $ 0.1482$ \\
-      0.2 & $ 3.9397\times 10^{-5}$ & $ 0.0628 $ & $ 3.3119\times 10^{-4} $ & $ 0.1820$ \\
-      0.3 & $ 8.3767\times 10^{-5}$ & $ 0.0915 $ & $ 4.4435\times 10^{-4} $ & $ 0.2108$ \\
-      0.4 & $ 1.3836\times 10^{-4}$ & $ 0.1176 $ & $ 5.5427\times 10^{-4} $ & $ 0.2354$ \\
-      0.5 & $ 1.9779\times 10^{-4}$ & $ 0.1406 $ & $ 6.5851\times 10^{-4} $ & $ 0.2566$ \\
-      0.6 & $ 2.5804\times 10^{-4}$ & $ 0.1606 $ & $ 7.5561\times 10^{-4} $ & $ 0.2749$ \\
-      0.7 & $ 3.1720\times 10^{-4}$ & $ 0.1781 $ & $ 8.4431\times 10^{-4} $ & $ 0.2906$ \\
-      0.8 & $ 3.7555\times 10^{-4}$ & $ 0.1938 $ & $ 9.2328\times 10^{-4} $ & $ 0.3039$ \\
-      0.9 & $ 4.3517\times 10^{-4}$ & $ 0.2086 $ & $ 9.9122\times 10^{-4} $ & $ 0.3148$ \\
-      1.0 & $ 4.9946\times 10^{-4}$ & $ 0.2235 $ & $ 1.0470\times 10^{-3} $ & $ 0.3236$ \\
+      \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+      0.0 & $ 6.0640\times 10^{-7}$ & $ 7.7872\times 10^{-4} $ & $ 1.1935\times 10^{-4} $ & $ 1.0925\times 10^{-2}$ \\
+      0.1 & $ 1.0510\times 10^{-5}$ & $ 3.2419\times 10^{-3} $ & $ 2.1964\times 10^{-4} $ & $ 1.4820\times 10^{-2}$ \\
+      0.2 & $ 3.9396\times 10^{-5}$ & $ 6.2766\times 10^{-3} $ & $ 3.3119\times 10^{-4} $ & $ 1.8199\times 10^{-2}$ \\
+      0.3 & $ 8.3766\times 10^{-5}$ & $ 9.1524\times 10^{-3} $ & $ 4.4435\times 10^{-4} $ & $ 2.1080\times 10^{-2}$ \\
+      0.4 & $ 1.3836\times 10^{-4}$ & $ 1.1763\times 10^{-2} $ & $ 5.5427\times 10^{-4} $ & $ 2.3543\times 10^{-2}$ \\
+      0.5 & $ 1.9779\times 10^{-4}$ & $ 1.4064\times 10^{-2} $ & $ 6.5851\times 10^{-4} $ & $ 2.5661\times 10^{-2}$ \\
+      0.6 & $ 2.5804\times 10^{-4}$ & $ 1.6064\times 10^{-2} $ & $ 7.5561\times 10^{-4} $ & $ 2.7488\times 10^{-2}$ \\
+      0.7 & $ 3.1720\times 10^{-4}$ & $ 1.7810\times 10^{-2} $ & $ 8.4431\times 10^{-4} $ & $ 2.9057\times 10^{-2}$ \\
+      0.8 & $ 3.7555\times 10^{-4}$ & $ 1.9379\times 10^{-2} $ & $ 9.2328\times 10^{-4} $ & $ 3.0386\times 10^{-2}$ \\
+      0.9 & $ 4.3517\times 10^{-4}$ & $ 2.0861\times 10^{-2} $ & $ 9.9122\times 10^{-4} $ & $ 3.1484\times 10^{-2}$ \\
+      1.0 & $ 4.9947\times 10^{-4}$ & $ 2.2349\times 10^{-2} $ & $ 1.0470\times 10^{-3} $ & $ 3.2358\times 10^{-2}$ \\
       \end{tabular}
       \caption{Results for the third architecture in the first case of the 1-dimensional Navier-Stokes Equations}
       \label{tab:NS113}
@@ -510,18 +530,18 @@ When solving Equation \ref{NS11} with the architectures explained above, the fol
         \begin{center}
         \begin{tabular}{ r | c  c | c  c}
           & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-        \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-        0.0 & $ 1.1785\times 10^{-7}$ & $ 0.0034 $ & $ 1.1033\times 10^{-5} $ & $ 0.0332$ \\
-        0.1 & $ 3.4148\times 10^{-7}$ & $ 0.0058 $ & $ 7.1700\times 10^{-6} $ & $ 0.0268$ \\
-        0.2 & $ 9.7519\times 10^{-7}$ & $ 0.0099 $ & $ 5.3050\times 10^{-6} $ & $ 0.0230$ \\
-        0.3 & $ 2.1471\times 10^{-6}$ & $ 0.0147 $ & $ 5.0460\times 10^{-6} $ & $ 0.0225$ \\
-        0.4 & $ 4.0106\times 10^{-6}$ & $ 0.0200 $ & $ 6.1678\times 10^{-6} $ & $ 0.0248$ \\
-        0.5 & $ 6.6570\times 10^{-6}$ & $ 0.0258 $ & $ 8.5383\times 10^{-6} $ & $ 0.0292$ \\
-        0.6 & $ 1.0104\times 10^{-5}$ & $ 0.0318 $ & $ 1.2097\times 10^{-5} $ & $ 0.0348$ \\
-        0.7 & $ 1.4311\times 10^{-5}$ & $ 0.0378 $ & $ 1.6868\times 10^{-5} $ & $ 0.0411$ \\
-        0.8 & $ 1.9196\times 10^{-5}$ & $ 0.0438 $ & $ 2.2987\times 10^{-5} $ & $ 0.0479$ \\
-        0.9 & $ 2.4648\times 10^{-5}$ & $ 0.0496 $ & $ 3.0768\times 10^{-5} $ & $ 0.0555$ \\
-        1.0 & $ 3.0525\times 10^{-5}$ & $ 0.0552 $ & $ 4.0788\times 10^{-5} $ & $ 0.0639$ \\
+        \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+        0.0 & $ 1.2035\times 10^{-7}$ & $ 3.4692\times 10^{-4} $ & $ 1.1034\times 10^{-5} $ & $ 3.3217\times 10^{-3}$ \\
+        0.1 & $ 3.4170\times 10^{-7}$ & $ 5.8455\times 10^{-4} $ & $ 7.1700\times 10^{-6} $ & $ 2.6777\times 10^{-3}$ \\
+        0.2 & $ 9.7516\times 10^{-7}$ & $ 9.8750\times 10^{-4} $ & $ 5.3049\times 10^{-6} $ & $ 2.3032\times 10^{-3}$ \\
+        0.3 & $ 2.1471\times 10^{-6}$ & $ 1.4653\times 10^{-3} $ & $ 5.0461\times 10^{-6} $ & $ 2.2464\times 10^{-3}$ \\
+        0.4 & $ 4.0106\times 10^{-6}$ & $ 2.0026\times 10^{-3} $ & $ 6.1677\times 10^{-6} $ & $ 2.4835\times 10^{-3}$ \\
+        0.5 & $ 6.6570\times 10^{-6}$ & $ 2.5801\times 10^{-3} $ & $ 8.5381\times 10^{-6} $ & $ 2.9220\times 10^{-3}$ \\
+        0.6 & $ 1.0104\times 10^{-5}$ & $ 3.1787\times 10^{-3} $ & $ 1.2098\times 10^{-5} $ & $ 3.4782\times 10^{-3}$ \\
+        0.7 & $ 1.4311\times 10^{-5}$ & $ 3.7829\times 10^{-3} $ & $ 1.6868\times 10^{-5} $ & $ 4.1071\times 10^{-3}$ \\
+        0.8 & $ 1.9196\times 10^{-5}$ & $ 4.3813\times 10^{-3} $ & $ 2.2987\times 10^{-5} $ & $ 4.7945\times 10^{-3}$ \\
+        0.9 & $ 2.4648\times 10^{-5}$ & $ 4.9647\times 10^{-3} $ & $ 3.0768\times 10^{-5} $ & $ 5.5469\times 10^{-3}$ \\
+        1.0 & $ 3.0525\times 10^{-5}$ & $ 5.5249\times 10^{-3} $ & $ 4.0787\times 10^{-5} $ & $ 6.3865\times 10^{-3}$ \\
         \end{tabular}
         \caption{Results for the fourth architecture in the first case of the 1-dimensional Navier-Stokes Equations}
         \label{tab:NS114}
@@ -549,8 +569,18 @@ When solving Equation \ref{NS12} with the architectures explained above, the fol
   \begin{center}
   \begin{tabular}{ r | c  c | c  c}
     & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-  \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-
+  \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+  0.0 & $ 1.5241\times 10^{-6}$ & $ 1.2345\times 10^{-3} $ & $ 8.6635\times 10^{-3} $ & $ 9.3078\times 10^{-2}$ \\
+  0.1 & $ 6.5389\times 10^{-6}$ & $ 2.5571\times 10^{-3} $ & $ 1.4381\times 10^{-2} $ & $ 1.1992\times 10^{-1}$ \\
+  0.2 & $ 2.1865\times 10^{-5}$ & $ 4.6760\times 10^{-3} $ & $ 2.2393\times 10^{-2} $ & $ 1.4964\times 10^{-1}$ \\
+  0.3 & $ 4.9040\times 10^{-5}$ & $ 7.0028\times 10^{-3} $ & $ 3.3283\times 10^{-2} $ & $ 1.8244\times 10^{-1}$ \\
+  0.4 & $ 9.0032\times 10^{-5}$ & $ 9.4885\times 10^{-3} $ & $ 4.7784\times 10^{-2} $ & $ 2.1859\times 10^{-1}$ \\
+  0.5 & $ 1.4730\times 10^{-4}$ & $ 1.2137\times 10^{-2} $ & $ 6.6815\times 10^{-2} $ & $ 2.5849\times 10^{-1}$ \\
+  0.6 & $ 2.2385\times 10^{-4}$ & $ 1.4962\times 10^{-2} $ & $ 9.1519\times 10^{-2} $ & $ 3.0252\times 10^{-1}$ \\
+  0.7 & $ 3.2333\times 10^{-4}$ & $ 1.7981\times 10^{-2} $ & $ 1.2330\times 10^{-1} $ & $ 3.5115\times 10^{-1}$ \\
+  0.8 & $ 4.5008\times 10^{-4}$ & $ 2.1215\times 10^{-2} $ & $ 1.6389\times 10^{-1} $ & $ 4.0483\times 10^{-1}$ \\
+  0.9 & $ 6.0920\times 10^{-4}$ & $ 2.4682\times 10^{-2} $ & $ 2.1535\times 10^{-1} $ & $ 4.6406\times 10^{-1}$ \\
+  1.0 & $ 8.0655\times 10^{-4}$ & $ 2.8400\times 10^{-2} $ & $ 2.8017\times 10^{-1} $ & $ 5.2931\times 10^{-1}$ \\
   \end{tabular}
   \caption{Results for the first architecture in the second case of the 1-dimensional Navier-Stokes Equations}
   \label{tab:NS121}
@@ -561,18 +591,18 @@ When solving Equation \ref{NS12} with the architectures explained above, the fol
     \begin{center}
     \begin{tabular}{ r | c  c | c  c}
       & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-    \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-    0.0 & $ 8.6068\times 10^{-7}$ & $ 0.0093 $ & $ 2.8796\times 10^{-3} $ & $ 0.5366$ \\
-    0.1 & $ 2.4480\times 10^{-6}$ & $ 0.0156 $ & $ 3.2165\times 10^{-3} $ & $ 0.5671$ \\
-    0.2 & $ 3.6892\times 10^{-6}$ & $ 0.0192 $ & $ 3.7059\times 10^{-3} $ & $ 0.6088$ \\
-    0.3 & $ 4.4041\times 10^{-6}$ & $ 0.0210 $ & $ 4.3900\times 10^{-3} $ & $ 0.6626$ \\
-    0.4 & $ 5.3148\times 10^{-6}$ & $ 0.0231 $ & $ 5.3268\times 10^{-3} $ & $ 0.7298$ \\
-    0.5 & $ 6.9956\times 10^{-6}$ & $ 0.0264 $ & $ 6.5958\times 10^{-3} $ & $ 0.8121$ \\
-    0.6 & $ 9.9863\times 10^{-6}$ & $ 0.0316 $ & $ 8.3072\times 10^{-3} $ & $ 0.9114$ \\
-    0.7 & $ 1.5001\times 10^{-5}$ & $ 0.0387 $ & $ 1.0615\times 10^{-2} $ & $ 1.0303$ \\
-    0.8 & $ 2.2718\times 10^{-5}$ & $ 0.0477 $ & $ 1.3734\times 10^{-2} $ & $ 1.1719$ \\
-    0.9 & $ 3.3336\times 10^{-5}$ & $ 0.0577 $ & $ 1.7967\times 10^{-2} $ & $ 1.3404$ \\
-    1.0 & $ 4.6835\times 10^{-5}$ & $ 0.0684 $ & $ 2.3737\times 10^{-2} $ & $ 1.5407$ \\
+    \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+    0.0 & $ 8.5628\times 10^{-7}$ & $ 9.2535\times 10^{-4} $ & $ 2.8796\times 10^{-3} $ & $ 5.3662\times 10^{-2}$ \\
+    0.1 & $ 2.4453\times 10^{-6}$ & $ 1.5638\times 10^{-3} $ & $ 3.2165\times 10^{-3} $ & $ 5.6714\times 10^{-2}$ \\
+    0.2 & $ 3.6890\times 10^{-6}$ & $ 1.9207\times 10^{-3} $ & $ 3.7059\times 10^{-3} $ & $ 6.0876\times 10^{-2}$ \\
+    0.3 & $ 4.4040\times 10^{-6}$ & $ 2.0986\times 10^{-3} $ & $ 4.3900\times 10^{-3} $ & $ 6.6257\times 10^{-2}$ \\
+    0.4 & $ 5.3140\times 10^{-6}$ & $ 2.3052\times 10^{-3} $ & $ 5.3268\times 10^{-3} $ & $ 7.2985\times 10^{-2}$ \\
+    0.5 & $ 6.9950\times 10^{-6}$ & $ 2.6448\times 10^{-3} $ & $ 6.5958\times 10^{-3} $ & $ 8.1214\times 10^{-2}$ \\
+    0.6 & $ 9.9864\times 10^{-6}$ & $ 3.1601\times 10^{-3} $ & $ 8.3072\times 10^{-3} $ & $ 9.1144\times 10^{-2}$ \\
+    0.7 & $ 1.5002\times 10^{-5}$ & $ 3.8732\times 10^{-3} $ & $ 1.0615\times 10^{-2} $ & $ 1.0303\times 10^{-1}$ \\
+    0.8 & $ 2.2719\times 10^{-5}$ & $ 4.7664\times 10^{-3} $ & $ 1.3734\times 10^{-2} $ & $ 1.1719\times 10^{-1}$ \\
+    0.9 & $ 3.3337\times 10^{-5}$ & $ 5.7738\times 10^{-3} $ & $ 1.7967\times 10^{-2} $ & $ 1.3404\times 10^{-1}$ \\
+    1.0 & $ 4.6836\times 10^{-5}$ & $ 6.8437\times 10^{-3} $ & $ 2.3737\times 10^{-2} $ & $ 1.5407\times 10^{-1}$ \\
     \end{tabular}
     \caption{Results for the second architecture in the second case of the 1-dimensional Navier-Stokes Equations}
     \label{tab:NS122}
@@ -583,18 +613,18 @@ When solving Equation \ref{NS12} with the architectures explained above, the fol
       \begin{center}
       \begin{tabular}{ r | c  c | c  c}
         & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-      \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-      0.0 & $ 1.7844\times 10^{-6}$ & $ 0.0134 $ & $ 5.9847\times 10^{-3} $ & $ 0.7736$ \\
-      0.1 & $ 2.4234\times 10^{-5}$ & $ 0.0492 $ & $ 2.0570\times 10^{-2} $ & $ 1.4342$ \\
-      0.2 & $ 1.0285\times 10^{-4}$ & $ 0.1014 $ & $ 4.6340\times 10^{-2} $ & $ 2.1527$ \\
-      0.3 & $ 2.6243\times 10^{-4}$ & $ 0.1620 $ & $ 8.6240\times 10^{-2} $ & $ 2.9367$ \\
-      0.4 & $ 5.3076\times 10^{-4}$ & $ 0.2304 $ & $ 1.4432\times 10^{-1} $ & $ 3.7990$ \\
-      0.5 & $ 9.3961\times 10^{-4}$ & $ 0.3065 $ & $ 2.2584\times 10^{-1} $ & $ 4.7522$ \\
-      0.6 & $ 1.5272\times 10^{-3}$ & $ 0.3908 $ & $ 3.3733\times 10^{-1} $ & $ 5.8080$ \\
-      0.7 & $ 2.3419\times 10^{-3}$ & $ 0.4839 $ & $ 4.8673\times 10^{-1} $ & $ 6.9766$ \\
-      0.8 & $ 3.4460\times 10^{-3}$ & $ 0.5870 $ & $ 6.8356\times 10^{-1} $ & $ 8.2678$ \\
-      0.9 & $ 4.9188\times 10^{-3}$ & $ 0.7013 $ & $ 9.3924\times 10^{-1} $ & $ 9.6914$ \\
-      1.0 & $ 6.8590\times 10^{-3}$ & $ 0.8282 $ & $ 1.2677 $ & $ 11.2590$ \\
+      \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+      0.0 & $ 1.7706\times 10^{-6}$ & $ 1.3306\times 10^{-3} $ & $ 5.9847\times 10^{-3} $ & $ 7.7361\times 10^{-2}$ \\
+      0.1 & $ 2.4228\times 10^{-5}$ & $ 4.9222\times 10^{-3} $ & $ 2.0570\times 10^{-2} $ & $ 1.4342\times 10^{-1}$ \\
+      0.2 & $ 1.0285\times 10^{-4}$ & $ 1.0141\times 10^{-2} $ & $ 4.6340\times 10^{-2} $ & $ 2.1527\times 10^{-1}$ \\
+      0.3 & $ 2.6243\times 10^{-4}$ & $ 1.6200\times 10^{-2} $ & $ 8.6240\times 10^{-2} $ & $ 2.9367\times 10^{-1}$ \\
+      0.4 & $ 5.3076\times 10^{-4}$ & $ 2.3038\times 10^{-2} $ & $ 1.4432\times 10^{-1} $ & $ 3.7990\times 10^{-1}$ \\
+      0.5 & $ 9.3961\times 10^{-4}$ & $ 3.0653\times 10^{-2} $ & $ 2.2584\times 10^{-1} $ & $ 4.7522\times 10^{-1}$ \\
+      0.6 & $ 1.5272\times 10^{-3}$ & $ 3.9080\times 10^{-2} $ & $ 3.3733\times 10^{-1} $ & $ 5.8080\times 10^{-1}$ \\
+      0.7 & $ 2.3419\times 10^{-3}$ & $ 4.8394\times 10^{-2} $ & $ 4.8673\times 10^{-1} $ & $ 6.9766\times 10^{-1}$ \\
+      0.8 & $ 3.4460\times 10^{-3}$ & $ 5.8703\times 10^{-2} $ & $ 6.8356\times 10^{-1} $ & $ 8.2678\times 10^{-1}$ \\
+      0.9 & $ 4.9188\times 10^{-3}$ & $ 7.0134\times 10^{-2} $ & $ 9.3924\times 10^{-1} $ & $ 9.6914\times 10^{-1}$ \\
+      1.0 & $ 6.8590\times 10^{-3}$ & $ 8.2819\times 10^{-2} $ & $ 1.2677 $ & $ 1.1259$ \\
       \end{tabular}
       \caption{Results for the third architecture in the second case of the 1-dimensional Navier-Stokes Equations}
       \label{tab:NS13}
@@ -605,20 +635,20 @@ When solving Equation \ref{NS12} with the architectures explained above, the fol
         \begin{center}
         \begin{tabular}{ r | c  c | c  c}
           & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-        \textbf{Time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-        0.0 & $ 2.4028\times 10^{-6}$ & $ 0.0155 $ & $ 6.6235\times 10^{-3} $ & $ 0.8139$ \\
-        0.1 & $ 3.3048\times 10^{-5}$ & $ 0.0575 $ & $ 2.2045\times 10^{-2} $ & $ 1.4848$ \\
-        0.2 & $ 1.3703\times 10^{-4}$ & $ 0.1171 $ & $ 5.0095\times 10^{-2} $ & $ 2.2382$ \\
-        0.3 & $ 3.4117\times 10^{-4}$ & $ 0.1847 $ & $ 9.4570\times 10^{-2} $ & $ 3.0752$ \\
-        0.4 & $ 6.7964\times 10^{-4}$ & $ 0.2607 $ & $ 1.6022\times 10^{-1} $ & $ 4.0027$ \\
-        0.5 & $ 1.1959\times 10^{-3}$ & $ 0.3458 $ & $ 2.5301\times 10^{-1} $ & $ 5.0300$ \\
-        0.6 & $ 1.9448\times 10^{-3}$ & $ 0.4410 $ & $ 3.8045\times 10^{-1} $ & $ 6.1681$ \\
-        0.7 & $ 2.9953\times 10^{-3}$ & $ 0.5473 $ & $ 5.5208\times 10^{-1} $ & $ 7.4302$ \\
-        0.8 & $ 4.4333\times 10^{-3}$ & $ 0.6658 $ & $ 7.8000\times 10^{-1} $ & $ 8.8318$ \\
-        0.9 & $ 6.3649\times 10^{-3}$ & $ 0.7978 $ & $ 1.0797 $ & $ 10.3908$ \\
-        1.0 & $ 8.9200\times 10^{-3}$ & $ 0.9445 $ & $ 1.4709 $ & $ 12.1279$ \\
+        \textbf{Time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+        0.0 & $ 2.3821\times 10^{-6}$ & $ 1.5434\times 10^{-3} $ & $ 6.6235\times 10^{-3} $ & $ 8.1385\times 10^{-2}$ \\
+        0.1 & $ 3.3026\times 10^{-5}$ & $ 5.7468\times 10^{-3} $ & $ 2.2045\times 10^{-2} $ & $ 1.4848\times 10^{-1}$ \\
+        0.2 & $ 1.3701\times 10^{-4}$ & $ 1.1705\times 10^{-2} $ & $ 5.0095\times 10^{-2} $ & $ 2.2382\times 10^{-1}$ \\
+        0.3 & $ 3.4115\times 10^{-4}$ & $ 1.8470\times 10^{-2} $ & $ 9.4570\times 10^{-2} $ & $ 3.0752\times 10^{-1}$ \\
+        0.4 & $ 6.7963\times 10^{-4}$ & $ 2.6070\times 10^{-2} $ & $ 1.6022\times 10^{-1} $ & $ 4.0027\times 10^{-1}$ \\
+        0.5 & $ 1.1959\times 10^{-3}$ & $ 3.4581\times 10^{-2} $ & $ 2.5301\times 10^{-1} $ & $ 5.0300\times 10^{-1}$ \\
+        0.6 & $ 1.9448\times 10^{-3}$ & $ 4.4100\times 10^{-2} $ & $ 3.8045\times 10^{-1} $ & $ 6.1681\times 10^{-1}$ \\
+        0.7 & $ 2.9953\times 10^{-3}$ & $ 5.4729\times 10^{-2} $ & $ 5.5208\times 10^{-1} $ & $ 7.4302\times 10^{-1}$ \\
+        0.8 & $ 4.4333\times 10^{-3}$ & $ 6.6583\times 10^{-2} $ & $ 7.8000\times 10^{-1} $ & $ 8.8318\times 10^{-1}$ \\
+        0.9 & $ 6.3649\times 10^{-3}$ & $ 7.9780\times 10^{-2} $ & $ 1.0797 $ & $ 1.0391$ \\
+        1.0 & $ 8.9200\times 10^{-3}$ & $ 9.4446\times 10^{-2} $ & $ 1.4709 $ & $ 1.2128$ \\
         \end{tabular}
-        \caption{Results for the fourth architecture in the first case of the 1-dimensional Navier-Stokes Equations}
+        \caption{Results for the fourth architecture in the second case of the 1-dimensional Navier-Stokes Equations}
         \label{tab:NS14}
         \end{center}
         \end{table}
@@ -628,11 +658,11 @@ When solving Equation \ref{NS12} with the architectures explained above, the fol
 For the 2-dimentional Navier-Stokes Equations, only one case was implemeneted with the listed five architectures:
 
 \begin{itemize}
-  \item Architechture 1: 5 hidden layers with 50 neurons each
-  \item Architechture 2: 8 hidden layers with 20 neurons each
-  \item Architechture 3: 8 hidden layers with 50 neurons each
-  \item Architechture 3: 8 hidden layers with 70 neurons each
-  \item Architechture 5: 8 hidden layers with 100 neurons each
+  \item Architecture 1: 5 hidden layers with 50 neurons each
+  \item Architecture 2: 8 hidden layers with 20 neurons each
+  \item Architecture 3: 8 hidden layers with 50 neurons each
+  \item Architecture 3: 8 hidden layers with 70 neurons each
+  \item Architecture 5: 8 hidden layers with 100 neurons each
 \end{itemize}
 
 \subsubsection*{Case 1:}
@@ -663,19 +693,19 @@ When solving Equation \ref{NS21} with the architectures explained above, the fol
 \begin{table}[H]
   \begin{center}
   \begin{tabular}{ r | c  c | c  c}
-    & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-  \textbf{time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-  0 & $1.7341\times 10^{-5}$ & $0.8328$ & $2.6630\times 10^{-2}$ & $32.6373$ \\
-  0.1 & $1.1645\times 10^{-3}$ & $6.8252$ & $1.0959\times 10^{-2}$ & $20.9369$\\
-  0.2 & $3.8980\times 10^{-3}$ & $12.4867$ & $8.0858\times 10^{-3}$ & $17.9842$\\ 
-  0.3 & $7.4127\times 10^{-3}$ & $17.2194$ & $1.0201\times 10^{-2}$ & $20.2000$\\ 
-  0.4 & $1.1246\times 10^{-2}$ & $21.2102$ & $1.4190\times 10^{-2}$ & $23.8244$\\
-  0.5 & $1.5156\times 10^{-2}$ & $24.6217$ & $1.9096\times 10^{-2}$ & $27.6374$\\
-  0.6 & $1.9022\times 10^{-2}$ & $27.5841$ & $2.4764\times 10^{-2}$ & $31.4732$\\
-  0.7 & $2.2797\times 10^{-2}$ & $30.1976$ & $3.1217\times 10^{-2}$ & $35.3368$\\
-  0.8 & $2.6465\times 10^{-2}$ & $32.5360$ & $3.8418\times 10^{-2}$ & $39.2008$\\
-  0.9 & $3.0017\times 10^{-2}$ & $34.6508$ & $4.6221\times 10^{-2}$ & $42.9982$\\
-  1.0 & $3.3443\times 10^{-2}$ & $36.5749$ & $5.4403\times 10^{-2}$ & $46.6490$\\
+    & \multicolumn{2}{c |}{$\psi(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
+  \textbf{time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+  0.0 & $ 1.7342\times 10^{-5}$ & $ 8.3287\times 10^{-3} $ & $ 2.6630\times 10^{-2} $ & $ 3.2637\times 10^{-1}$ \\
+  0.1 & $ 1.1646\times 10^{-3}$ & $ 6.8252\times 10^{-2} $ & $ 1.0959\times 10^{-2} $ & $ 2.0937\times 10^{-1}$ \\
+  0.2 & $ 3.8980\times 10^{-3}$ & $ 1.2487\times 10^{-1} $ & $ 8.0858\times 10^{-3} $ & $ 1.7984\times 10^{-1}$ \\
+  0.3 & $ 7.4127\times 10^{-3}$ & $ 1.7219\times 10^{-1} $ & $ 1.0201\times 10^{-2} $ & $ 2.0200\times 10^{-1}$ \\
+  0.4 & $ 1.1247\times 10^{-2}$ & $ 2.1210\times 10^{-1} $ & $ 1.4190\times 10^{-2} $ & $ 2.3824\times 10^{-1}$ \\
+  0.5 & $ 1.5156\times 10^{-2}$ & $ 2.4622\times 10^{-1} $ & $ 1.9096\times 10^{-2} $ & $ 2.7637\times 10^{-1}$ \\
+  0.6 & $ 1.9022\times 10^{-2}$ & $ 2.7584\times 10^{-1} $ & $ 2.4764\times 10^{-2} $ & $ 3.1473\times 10^{-1}$ \\
+  0.7 & $ 2.2797\times 10^{-2}$ & $ 3.0198\times 10^{-1} $ & $ 3.1217\times 10^{-2} $ & $ 3.5337\times 10^{-1}$ \\
+  0.8 & $ 2.6465\times 10^{-2}$ & $ 3.2536\times 10^{-1} $ & $ 3.8418\times 10^{-2} $ & $ 3.9201\times 10^{-1}$ \\
+  0.9 & $ 3.0017\times 10^{-2}$ & $ 3.4651\times 10^{-1} $ & $ 4.6221\times 10^{-2} $ & $ 4.2998\times 10^{-1}$ \\
+  1.0 & $ 3.3443\times 10^{-2}$ & $ 3.6575\times 10^{-1} $ & $ 5.4403\times 10^{-2} $ & $ 4.6649\times 10^{-1}$ \\
   \end{tabular}
   \caption{Results for the first architecture for the 2-dimesnional Navier Stokes Equations}
   \label{tab:NS21}
@@ -685,19 +715,19 @@ When solving Equation \ref{NS21} with the architectures explained above, the fol
   \begin{table}[H]
     \begin{center}
     \begin{tabular}{ r | c  c | c  c}
-      & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-    \textbf{time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-    0.0 & $ 9.9230\times 10^{-5}$ & $ 1.9923 $ & $ 1.5095\times 10^{-2} $ & $ 24.5721$ \\
-    0.1 & $ 8.7404\times 10^{-4}$ & $ 5.9128 $ & $ 8.5973\times 10^{-3} $ & $ 18.5443$ \\
-    0.2 & $ 2.6156\times 10^{-3}$ & $ 10.2286 $ & $ 7.6538\times 10^{-3} $ & $ 17.4972$ \\
-    0.3 & $ 5.0194\times 10^{-3}$ & $ 14.1696 $ & $ 9.5980\times 10^{-3} $ & $ 19.5939$ \\
-    0.4 & $ 7.8569\times 10^{-3}$ & $ 17.7278 $ & $ 1.3048\times 10^{-2} $ & $ 22.8455$ \\
-    0.5 & $ 1.0956\times 10^{-2}$ & $ 20.9343 $ & $ 1.7481\times 10^{-2} $ & $ 26.4430$ \\
-    0.6 & $ 1.4186\times 10^{-2}$ & $ 23.8212 $ & $ 2.2916\times 10^{-2} $ & $ 30.2760$ \\
-    0.7 & $ 1.7444\times 10^{-2}$ & $ 26.4155 $ & $ 2.9685\times 10^{-2} $ & $ 34.4588$ \\
-    0.8 & $ 2.0647\times 10^{-2}$ & $ 28.7384 $ & $ 3.8272\times 10^{-2} $ & $ 39.1266$ \\
-    0.9 & $ 2.3724\times 10^{-2}$ & $ 30.8054 $ & $ 4.9202\times 10^{-2} $ & $ 44.3630$ \\
-    1.0 & $ 2.6613\times 10^{-2}$ & $ 32.6271 $ & $ 6.2971\times 10^{-2} $ & $ 50.1880$ \\
+      & \multicolumn{2}{c |}{$\psi(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
+    \textbf{time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+    0.0 & $ 9.9230\times 10^{-5}$ & $ 1.9923\times 10^{-2} $ & $ 1.5095\times 10^{-2} $ & $ 2.4572\times 10^{-1}$ \\
+    0.1 & $ 8.7404\times 10^{-4}$ & $ 5.9128\times 10^{-2} $ & $ 8.5973\times 10^{-3} $ & $ 1.8544\times 10^{-1}$ \\
+    0.2 & $ 2.6156\times 10^{-3}$ & $ 1.0229\times 10^{-1} $ & $ 7.6538\times 10^{-3} $ & $ 1.7497\times 10^{-1}$ \\
+    0.3 & $ 5.0194\times 10^{-3}$ & $ 1.4170\times 10^{-1} $ & $ 9.5980\times 10^{-3} $ & $ 1.9594\times 10^{-1}$ \\
+    0.4 & $ 7.8569\times 10^{-3}$ & $ 1.7728\times 10^{-1} $ & $ 1.3048\times 10^{-2} $ & $ 2.2845\times 10^{-1}$ \\
+    0.5 & $ 1.0956\times 10^{-2}$ & $ 2.0934\times 10^{-1} $ & $ 1.7481\times 10^{-2} $ & $ 2.6443\times 10^{-1}$ \\
+    0.6 & $ 1.4186\times 10^{-2}$ & $ 2.3821\times 10^{-1} $ & $ 2.2916\times 10^{-2} $ & $ 3.0276\times 10^{-1}$ \\
+    0.7 & $ 1.7444\times 10^{-2}$ & $ 2.6415\times 10^{-1} $ & $ 2.9685\times 10^{-2} $ & $ 3.4459\times 10^{-1}$ \\
+    0.8 & $ 2.0647\times 10^{-2}$ & $ 2.8738\times 10^{-1} $ & $ 3.8272\times 10^{-2} $ & $ 3.9127\times 10^{-1}$ \\
+    0.9 & $ 2.3724\times 10^{-2}$ & $ 3.0805\times 10^{-1} $ & $ 4.9202\times 10^{-2} $ & $ 4.4363\times 10^{-1}$ \\
+    1.0 & $ 2.6613\times 10^{-2}$ & $ 3.2627\times 10^{-1} $ & $ 6.2971\times 10^{-2} $ & $ 5.0188\times 10^{-1}$ \\
     \end{tabular}
     \caption{Results for the second architecture for the 2-dimesnional Navier Stokes Equations}
     \label{tab:NS22}
@@ -707,19 +737,19 @@ When solving Equation \ref{NS21} with the architectures explained above, the fol
     \begin{table}[H]
       \begin{center}
       \begin{tabular}{ r | c  c | c  c}
-        & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-      \textbf{time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-      0.0 & $ 2.1447\times 10^{-5}$ & $ 0.9262 $ & $ 2.3688\times 10^{-2} $ & $ 30.7818$ \\
-      0.1 & $ 1.1856\times 10^{-3}$ & $ 6.8865 $ & $ 1.1292\times 10^{-2} $ & $ 21.2527$ \\
-      0.2 & $ 3.8643\times 10^{-3}$ & $ 12.4326 $ & $ 8.9173\times 10^{-3} $ & $ 18.8863$ \\
-      0.3 & $ 7.1762\times 10^{-3}$ & $ 16.9425 $ & $ 1.0742\times 10^{-2} $ & $ 20.7285$ \\
-      0.4 & $ 1.0635\times 10^{-2}$ & $ 20.6252 $ & $ 1.4303\times 10^{-2} $ & $ 23.9189$ \\
-      0.5 & $ 1.4016\times 10^{-2}$ & $ 23.6781 $ & $ 1.8837\times 10^{-2} $ & $ 27.4495$ \\
-      0.6 & $ 1.7252\times 10^{-2}$ & $ 26.2692 $ & $ 2.4307\times 10^{-2} $ & $ 31.1812$ \\
-      0.7 & $ 2.0354\times 10^{-2}$ & $ 28.5338 $ & $ 3.0877\times 10^{-2} $ & $ 35.1438$ \\
-      0.8 & $ 2.3374\times 10^{-2}$ & $ 30.5769 $ & $ 3.8664\times 10^{-2} $ & $ 39.3266$ \\
-      0.9 & $ 2.6369\times 10^{-2}$ & $ 32.4774 $ & $ 4.7642\times 10^{-2} $ & $ 43.6540$ \\
-      1.0 & $ 2.9401\times 10^{-2}$ & $ 34.2932 $ & $ 5.7633\times 10^{-2} $ & $ 48.0137$ \\
+        & \multicolumn{2}{c |}{$\psi(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
+      \textbf{time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+      0.0 & $ 2.1447\times 10^{-5}$ & $ 9.2622\times 10^{-3} $ & $ 2.3688\times 10^{-2} $ & $ 3.0782\times 10^{-1}$ \\
+      0.1 & $ 1.1856\times 10^{-3}$ & $ 6.8865\times 10^{-2} $ & $ 1.1292\times 10^{-2} $ & $ 2.1253\times 10^{-1}$ \\
+      0.2 & $ 3.8643\times 10^{-3}$ & $ 1.2433\times 10^{-1} $ & $ 8.9173\times 10^{-3} $ & $ 1.8886\times 10^{-1}$ \\
+      0.3 & $ 7.1762\times 10^{-3}$ & $ 1.6943\times 10^{-1} $ & $ 1.0742\times 10^{-2} $ & $ 2.0729\times 10^{-1}$ \\
+      0.4 & $ 1.0635\times 10^{-2}$ & $ 2.0625\times 10^{-1} $ & $ 1.4303\times 10^{-2} $ & $ 2.3919\times 10^{-1}$ \\
+      0.5 & $ 1.4016\times 10^{-2}$ & $ 2.3678\times 10^{-1} $ & $ 1.8837\times 10^{-2} $ & $ 2.7449\times 10^{-1}$ \\
+      0.6 & $ 1.7252\times 10^{-2}$ & $ 2.6269\times 10^{-1} $ & $ 2.4307\times 10^{-2} $ & $ 3.1181\times 10^{-1}$ \\
+      0.7 & $ 2.0354\times 10^{-2}$ & $ 2.8534\times 10^{-1} $ & $ 3.0877\times 10^{-2} $ & $ 3.5144\times 10^{-1}$ \\
+      0.8 & $ 2.3374\times 10^{-2}$ & $ 3.0577\times 10^{-1} $ & $ 3.8664\times 10^{-2} $ & $ 3.9327\times 10^{-1}$ \\
+      0.9 & $ 2.6369\times 10^{-2}$ & $ 3.2477\times 10^{-1} $ & $ 4.7642\times 10^{-2} $ & $ 4.3654\times 10^{-1}$ \\
+      1.0 & $ 2.9401\times 10^{-2}$ & $ 3.4293\times 10^{-1} $ & $ 5.7633\times 10^{-2} $ & $ 4.8014\times 10^{-1}$ \\
       \end{tabular}
       \caption{Results for the third architecture for the 2-dimesnional Navier Stokes Equations}
       \label{tab:NS23}
@@ -729,40 +759,58 @@ When solving Equation \ref{NS21} with the architectures explained above, the fol
       \begin{table}[H]
         \begin{center}
         \begin{tabular}{ r | c  c | c  c}
-          & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-        \textbf{time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-
+          & \multicolumn{2}{c |}{$\psi(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
+        \textbf{time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+        0.0 & $ 2.0811\times 10^{-5}$ & $ 9.1239\times 10^{-3} $ & $ 1.4456\times 10^{-2} $ & $ 2.4046\times 10^{-1}$ \\
+        0.1 & $ 1.0758\times 10^{-3}$ & $ 6.5599\times 10^{-2} $ & $ 8.7353\times 10^{-3} $ & $ 1.8693\times 10^{-1}$ \\
+        0.2 & $ 3.4794\times 10^{-3}$ & $ 1.1797\times 10^{-1} $ & $ 8.1228\times 10^{-3} $ & $ 1.8025\times 10^{-1}$ \\
+        0.3 & $ 6.4367\times 10^{-3}$ & $ 1.6046\times 10^{-1} $ & $ 1.0359\times 10^{-2} $ & $ 2.0356\times 10^{-1}$ \\
+        0.4 & $ 9.4849\times 10^{-3}$ & $ 1.9478\times 10^{-1} $ & $ 1.4200\times 10^{-2} $ & $ 2.3833\times 10^{-1}$ \\
+        0.5 & $ 1.2373\times 10^{-2}$ & $ 2.2247\times 10^{-1} $ & $ 1.8950\times 10^{-2} $ & $ 2.7532\times 10^{-1}$ \\
+        0.6 & $ 1.4979\times 10^{-2}$ & $ 2.4478\times 10^{-1} $ & $ 2.4203\times 10^{-2} $ & $ 3.1114\times 10^{-1}$ \\
+        0.7 & $ 1.7252\times 10^{-2}$ & $ 2.6269\times 10^{-1} $ & $ 2.9710\times 10^{-2} $ & $ 3.4473\times 10^{-1}$ \\
+        0.8 & $ 1.9177\times 10^{-2}$ & $ 2.7696\times 10^{-1} $ & $ 3.5310\times 10^{-2} $ & $ 3.7582\times 10^{-1}$ \\
+        0.9 & $ 2.0757\times 10^{-2}$ & $ 2.8814\times 10^{-1} $ & $ 4.0887\times 10^{-2} $ & $ 4.0441\times 10^{-1}$ \\
+        1.0 & $ 2.2000\times 10^{-2}$ & $ 2.9665\times 10^{-1} $ & $ 4.6361\times 10^{-2} $ & $ 4.3063\times 10^{-1}$ \\
         \end{tabular}
         \caption{Results for the fourth architecture for the 2-dimesnional Navier Stokes Equations}
-        \label{tab:NS21}
+        \label{tab:NS24}
         \end{center}
         \end{table}
 
       \begin{table}[H]
         \begin{center}
         \begin{tabular}{ r | c  c | c  c}
-          & \multicolumn{2}{c |}{$u(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
-        \textbf{time} & \textbf{MSE} & \textbf{$l^2$ error}  & \textbf{MSE} & \textbf{$l^2$ error} \\ \hline
-        0.0 & $ 1.6969\times 10^{-5}$ & $ 0.8239 $ & $ 1.9618\times 10^{-2} $ & $ 28.0128$ \\
-        0.1 & $ 9.4158\times 10^{-4}$ & $ 6.1370 $ & $ 9.3919\times 10^{-3} $ & $ 19.3824$ \\
-        0.2 & $ 3.1448\times 10^{-3}$ & $ 11.2157 $ & $ 8.0040\times 10^{-3} $ & $ 17.8930$ \\
-        0.3 & $ 5.9426\times 10^{-3}$ & $ 15.4176 $ & $ 1.0275\times 10^{-2} $ & $ 20.2732$ \\
-        0.4 & $ 8.9039\times 10^{-3}$ & $ 18.8721 $ & $ 1.4243\times 10^{-2} $ & $ 23.8686$ \\
-        0.5 & $ 1.1787\times 10^{-2}$ & $ 21.7140 $ & $ 1.9205\times 10^{-2} $ & $ 27.7166$ \\
-        0.6 & $ 1.4485\times 10^{-2}$ & $ 24.0708 $ & $ 2.4883\times 10^{-2} $ & $ 31.5488$ \\
-        0.7 & $ 1.6976\times 10^{-2}$ & $ 26.0586 $ & $ 3.1112\times 10^{-2} $ & $ 35.2773$ \\
-        0.8 & $ 1.9294\times 10^{-2}$ & $ 27.7807 $ & $ 3.7755\times 10^{-2} $ & $ 38.8615$ \\
-        0.9 & $ 2.1502\times 10^{-2}$ & $ 29.3270 $ & $ 4.4696\times 10^{-2} $ & $ 42.2827$ \\
-        1.0 & $ 2.3676\times 10^{-2}$ & $ 30.7742 $ & $ 5.1843\times 10^{-2} $ & $ 45.5382$ \\
+          & \multicolumn{2}{c |}{$\psi(x,t)$} & \multicolumn{2}{c}{$p(x,t)$} \\ \hline
+        \textbf{time} & \textbf{MSE} & \textbf{$L^2$ error}  & \textbf{MSE} & \textbf{$L^2$ error} \\ \hline
+        0.0 & $ 1.6969\times 10^{-5}$ & $ 8.2386\times 10^{-3} $ & $ 1.9618\times 10^{-2} $ & $ 2.8013\times 10^{-1}$ \\
+        0.1 & $ 9.4158\times 10^{-4}$ & $ 6.1370\times 10^{-2} $ & $ 9.3919\times 10^{-3} $ & $ 1.9382\times 10^{-1}$ \\
+        0.2 & $ 3.1448\times 10^{-3}$ & $ 1.1216\times 10^{-1} $ & $ 8.0040\times 10^{-3} $ & $ 1.7893\times 10^{-1}$ \\
+        0.3 & $ 5.9426\times 10^{-3}$ & $ 1.5418\times 10^{-1} $ & $ 1.0275\times 10^{-2} $ & $ 2.0273\times 10^{-1}$ \\
+        0.4 & $ 8.9039\times 10^{-3}$ & $ 1.8872\times 10^{-1} $ & $ 1.4243\times 10^{-2} $ & $ 2.3869\times 10^{-1}$ \\
+        0.5 & $ 1.1787\times 10^{-2}$ & $ 2.1714\times 10^{-1} $ & $ 1.9205\times 10^{-2} $ & $ 2.7717\times 10^{-1}$ \\
+        0.6 & $ 1.4485\times 10^{-2}$ & $ 2.4071\times 10^{-1} $ & $ 2.4883\times 10^{-2} $ & $ 3.1549\times 10^{-1}$ \\
+        0.7 & $ 1.6976\times 10^{-2}$ & $ 2.6059\times 10^{-1} $ & $ 3.1112\times 10^{-2} $ & $ 3.5277\times 10^{-1}$ \\
+        0.8 & $ 1.9294\times 10^{-2}$ & $ 2.7781\times 10^{-1} $ & $ 3.7755\times 10^{-2} $ & $ 3.8862\times 10^{-1}$ \\
+        0.9 & $ 2.1502\times 10^{-2}$ & $ 2.9327\times 10^{-1} $ & $ 4.4696\times 10^{-2} $ & $ 4.2283\times 10^{-1}$ \\
+        1.0 & $ 2.3676\times 10^{-2}$ & $ 3.0774\times 10^{-1} $ & $ 5.1843\times 10^{-2} $ & $ 4.5538\times 10^{-1}$ \\
         \end{tabular}
         \caption{Results for the fifth architecture for the 2-dimesnional Navier Stokes Equations}
-        \label{tab:NS21}
+        \label{tab:NS25}
         \end{center}
         \end{table}
   \section{Conclussions}
 
+  When looking at tables \ref{tab:B11} - \ref{tab:B33}, the first thing that one can visualize is how, for all three cases, the PINNs implemented had a really good performance, approximating the exact proposed solution very closely and obtaining very positive indicators of both MSE and $L^2 Error$. However, it is interesting to see how for each case, it can be seen how the architecture implemented had no effect on the error evolution through the time domain, allowing to conclude that for small enough problems, the implemented architecture does not affect the proposed solution when the architecture is big enough for it to capture the nature of the problem. Another interesting conclusion that can be drawn from these results is that, although the architecture becomes larger, it does not lead to the common problem of overfitting, since by the nature of PINNs, they are trained mainly on the residuals of the underlying equations of the phenomenon and therefore, overfitting to the training data is no longer a possible problem.\\
+
+  Now when looking at both 1-dimensional and 2-dimensional Navier-Stokes Equations in tables \ref{tab:NS111} - \ref{tab:NS25}, there are multiple points to address. Firstly, it is interesting to see how, here we have a similar behavior to other numerical methods for solving time-dependent PDEs, in which the error grows as the time domain progresses, this can be due to a great concentration of data points on the initial scenario, for which there is not only the points used for the training process using the residual of the Equations, but also the initial data provided by the problem itself.\\
+
+  Finally, it is worth noting the difference between the results for the pressure field and the velocity field, in which it can be seen how the neural network obtains a fairly acceptable approximation for the velocity field while presenting relatively large errors for the pressure. This may be due to the fact that, since the network is trained with initial and boundary data for the velocity, while it is only trained with boundary values for the pressure, it can focus mainly on the correct estimation of the velocity, without really worrying about a very good fit for the pressure. Therefore, the possibility is raised, as a future research, to implement not one but three PINNs, following a methodology similar to the one proposed by Chorin \cite{chorin1968numerical} in which the problem is divided into three stages, the first one an estimation of a candidate velocity, the second one the estimation of the pressure field based on the projection of this candidate velocity to the divergence-free field and the third one the corrected velocity estimation.
+
 
 \section*{Acknowledgements}
+
+I have no words to thank my brother Samuel Salazar, who has accompanied me on this path of research and thanks to whom I was motivated to do this research in the field of fluid dynamics. I also want to thank my father Wilson Salazar and my mother Patricia Arango for being those who throughout my life have always fanned the flames of curiosity in me and finally I want to thank all my teachers of the career for being those who have motivated in me the desire to investigate and seek new problems on which to work in this beautiful field that is applied mathematics.
 
 \bibliographystyle{vancouver}
 \bibliography{references.bib}

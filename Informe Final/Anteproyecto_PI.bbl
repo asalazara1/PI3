@@ -68,4 +68,15 @@ Zhu C, Byrd RH, Lu P, Nocedal J.
 \newblock ACM Trans Math Softw. 1997 dec;23(4):550–560.
 \newblock Available from: \url{https://doi.org/10.1145/279232.279236}.
 
+\bibitem{GCP}
+{Google}. General-purpose machine family for Compute Engine;.
+\newblock Accessed: 2023-11-10.
+\newblock
+  \url{https://cloud.google.com/compute/docs/general-purpose-machines#e2-high-mem}.
+
+\bibitem{chorin1968numerical}
+Chorin AJ.
+\newblock Numerical solution of the Navier-Stokes equations.
+\newblock Mathematics of computation. 1968;22(104):745-62.
+
 \end{thebibliography}
